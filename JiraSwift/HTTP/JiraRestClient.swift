@@ -16,19 +16,33 @@ public class JiraRestClient: RestClient {
     
     
     public func getBoards(completionBlock:@escaping ([Board]) -> Void) {
+        getBoards(startAt: 0, completionBlock: completionBlock)
+    }
+    
+    public func getBoards(startAt: Int, completionBlock:@escaping (([Board]) -> Void)) -> Void {
         
-        jsonFor(relativeURL: "agile/latest/board") { (json) in
-            if let agileResponse = AgileResponse(json: json) {            
+        jsonDataFor(relativeURL: "agile/latest/board?startAt=\(startAt)") { (json) in
+            
+            let decoder = JSONDecoder()
+            
+            do {
+                let boardResponse = try decoder.decode(BoardResponse.self, from: json)
+                let boards = boardResponse.boards
                 
-                let boards = Board.boardsWith(agileResponse: agileResponse).sorted(by: { $0.name < $1.name})
-                
-                completionBlock(boards)
-            } else {
-                //TODO: Call error block
-            }            
+                if boardResponse.isLast == false {
+                    self.getBoards(startAt: startAt + boardResponse.maxResults, completionBlock: { (blockBoards)  in
+                        completionBlock(boards + blockBoards)
+                    })
+                } else {
+                    completionBlock(boards)                    
+                }
+            } catch {
+                print(error)
+            }
+            
         }
     }
-
+    
     public func getCurrentSprintFor(board: Board, completion:@escaping ((Sprint?) -> Void)) -> Void {
         getSprintsFor(board: board, completion:{ (sprints) in
             for sprint in sprints {
@@ -49,29 +63,43 @@ public class JiraRestClient: RestClient {
     
     public func getSprintsFor(board: Board, startAt: Int, completion:@escaping (([Sprint]) -> Void)) -> Void {
         
-        jsonFor(relativeURL: "agile/latest/board/\(board.id)/sprint?startAt=\(startAt)") { (json) in
+        jsonDataFor(relativeURL: "agile/latest/board/\(board.id)/sprint?startAt=\(startAt)") { (json) in
             
-            if let agileResponse = AgileResponse(json: json) {            
+            let decoder = JSONDecoder()
+            
+            do {
+                let sprintResponse = try decoder.decode(SprintResponse.self, from: json)
+                let sprints = sprintResponse.sprints
                 
-                let sprints = Sprint.sprintsWith(agileResponse: agileResponse).sorted(by: { $0.name < $1.name})
-                
-                if agileResponse.isLast == false {
-                    self.getSprintsFor(board: board, startAt: startAt + agileResponse.maxResults, completion: { (blockSprints)  in
+                if sprintResponse.isLast == false {
+                    self.getSprintsFor(board: board, startAt: startAt + sprintResponse.maxResults, completion: { (blockSprints)  in
                         completion(sprints + blockSprints)
                     })
                 } else {
                     completion(sprints)                    
                 }
-
-            } else {
-                //TODO: Call error block
-                print("Error occurred")
+            } catch {
+                print(error)
             }
             
         }
-        
     }
     
+    public func issue(identifier: String, completionBlock:(@escaping (Issue) -> Void)){
+        
+        jsonDataFor(relativeURL: "api/2/issue/\(identifier)") { json -> Void in
+            let decoder = JSONDecoder()
+            
+            do {
+                let issue = try decoder.decode(Issue.self, from: json)
+                print(issue)
+                completionBlock(issue)
+            } catch {
+                print(error)
+            }
+        }
+    }
+
     public func issuesFor(board: Board, sprint: Sprint, completionBlock:(@escaping ([Issue]) -> Void)) {
         //FIXME - The start thing should work properly with bleow method
         let relativeURL = "agile/latest/board/\(board.id)/sprint/\(sprint.id)/issue?startAt="
@@ -79,8 +107,12 @@ public class JiraRestClient: RestClient {
     }
     
     public func issuesFor(relativeURL: String, startAt: Int, completionBlock:(@escaping ([Issue]) -> Void)){
-        jsonFor(relativeURL: relativeURL + "&startAt=\(startAt)") { json -> Void in
-            if let issueResponse = IssueResponse(json: json) {
+        jsonDataFor(relativeURL: relativeURL + "&startAt=\(startAt)") { json -> Void in
+            
+            let decoder = JSONDecoder()
+            
+            do {
+                let issueResponse = try decoder.decode(IssueResponse.self, from: json)
                 let issues = issueResponse.issues
                 let nextIndexToFetch = issueResponse.nextIndex()
                 if nextIndexToFetch >= 0 {
@@ -92,15 +124,21 @@ public class JiraRestClient: RestClient {
                     //Done, no more to fetch
                     completionBlock(issues)
                 }
+                
+            } catch {
+                print(error)
             }
+
         }
     }
+    
     
     public func issuesFor(filter: JQLFilter, completionBlock:(@escaping ([Issue]) -> Void)){
         let relativeUrl = "api/2/search?" + filter.getString()
         
         issuesFor(relativeURL: relativeUrl, startAt: 0, completionBlock:completionBlock)
     }
+    
     
     //All Sprints for board
     //        curl -u username:password -X GET -H "Content-Type: application/json" "<Base URL>/agile/latest/board/10/sprint" | python -m json.tool | less

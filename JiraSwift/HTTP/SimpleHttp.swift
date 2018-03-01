@@ -39,7 +39,7 @@ class SimpleHttp: NSObject {
         self.headers = headers
     }
     
-    func getJSON(url: URL, completion:(@escaping (NSDictionary) -> Void), errorBlock:(@escaping () -> Void)){
+    func getJSONData(url: URL, completion:(@escaping (Data) -> Void), errorBlock:(@escaping () -> Void)){
         let request = URLRequest(url: url)        
         
         let config = URLSessionConfiguration.default
@@ -54,11 +54,10 @@ class SimpleHttp: NSObject {
         authHeaders += self.headers
         config.httpAdditionalHeaders = authHeaders
         
-//        print("Curl = \(curlRequestWithURL(url:url.absoluteString, headers:authHeaders))")
+        print("Curl = \(curlRequestWithURL(url:url.absoluteString, headers:authHeaders))")
         
-        var responseDict: NSDictionary = NSDictionary()
         let session: URLSession = URLSession(configuration: config, delegate: nil, delegateQueue: nil)
-
+        
         let task = session.dataTask(with: request, completionHandler: { data, response, error in
             if let error = error {
                 print("Error while trying to re-authenticate the user: \(error)")
@@ -73,13 +72,8 @@ class SimpleHttp: NSObject {
                         print("No data available")
                         throw(SimpleHttpError.NoData)
                     }
-                    guard let json = try JSONSerialization.jsonObject(with: data, options: []) as? NSDictionary else {
-                        print("No data available")
-                        throw(SimpleHttpError.JSONSerialization)
-                    }
                     
-                    responseDict = json
-                    completion(responseDict)
+                    completion(data)
                     //Call completion block here
                     
                 } catch {
@@ -87,11 +81,12 @@ class SimpleHttp: NSObject {
                     errorBlock()
                 }
             }
-
+            
         }) 
         
         task.resume()
     }
+    
 }
 
 func += <K, V> (left: inout [K:V], right: [K:V]) { 

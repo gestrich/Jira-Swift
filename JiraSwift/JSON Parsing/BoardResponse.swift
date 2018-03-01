@@ -1,5 +1,5 @@
 //
-//  IssueResponse.swift
+//  BoardResponse.swift
 //  JiraSwift
 //
 //  Created by Bill Gestrich on 10/28/17.
@@ -8,11 +8,20 @@
 
 import Foundation
 
-public struct IssueResponse : Codable {
+struct BoardResponse : Codable {
+    var isLast: Bool = false
     var maxResults: Int = 0
     var startAt: Int = 0
     var total: Int = 0
-    var issues: [Issue]
+    var boards: [Board]
+    
+    enum CodingKeys : String, CodingKey {
+        case isLast
+        case maxResults
+        case startAt
+        case total
+        case boards = "values"
+    }
     
     func nextIndex() -> Int {
         let lastIndexFetched = startAt + (maxResults - 1)
@@ -23,5 +32,6 @@ public struct IssueResponse : Codable {
             return -1
         }
     }
+    
 }
 

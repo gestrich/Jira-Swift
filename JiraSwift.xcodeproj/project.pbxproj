@@ -8,8 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		A957563F2046351300AC08C0 /* FileUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A957563E2046351300AC08C0 /* FileUtils.swift */; };
+		A957566620478DC600AC08C0 /* IssueResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A957566520478DC600AC08C0 /* IssueResponse.swift */; };
+		A95756682047902100AC08C0 /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = A95756672047902100AC08C0 /* JSON.swift */; };
+		A957566A204792F500AC08C0 /* Issue.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9575669204792F500AC08C0 /* Issue.swift */; };
+		A9778ED72048B9440014BC68 /* BoardResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9778ED62048B9440014BC68 /* BoardResponse.swift */; };
+		A9778ED92048BF990014BC68 /* SprintResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9778ED82048BF990014BC68 /* SprintResponse.swift */; };
 		A977DEF72043242400637496 /* JiraSwift.h in Headers */ = {isa = PBXBuildFile; fileRef = A977DEF52043242400637496 /* JiraSwift.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A977DF39204337F500637496 /* JiraAssignee.swift in Sources */ = {isa = PBXBuildFile; fileRef = A977DF29204337F400637496 /* JiraAssignee.swift */; };
+		A977DF39204337F500637496 /* Assignee.swift in Sources */ = {isa = PBXBuildFile; fileRef = A977DF29204337F400637496 /* Assignee.swift */; };
 		A977DF3A204337F500637496 /* Dictionary+URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = A977DF2A204337F400637496 /* Dictionary+URL.swift */; };
 		A977DF3B204337F500637496 /* RestClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A977DF2B204337F400637496 /* RestClient.swift */; };
 		A977DF3C204337F500637496 /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = A977DF2C204337F400637496 /* Board.swift */; };
@@ -17,11 +22,8 @@
 		A977DF3F204337F500637496 /* IssueFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A977DF2F204337F400637496 /* IssueFilter.swift */; };
 		A977DF40204337F500637496 /* SimpleHttp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A977DF30204337F400637496 /* SimpleHttp.swift */; };
 		A977DF41204337F500637496 /* Sprint.swift in Sources */ = {isa = PBXBuildFile; fileRef = A977DF31204337F400637496 /* Sprint.swift */; };
-		A977DF42204337F500637496 /* AgileResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A977DF32204337F400637496 /* AgileResponse.swift */; };
 		A977DF43204337F500637496 /* String+Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = A977DF33204337F400637496 /* String+Tools.swift */; };
-		A977DF44204337F500637496 /* Issue.swift in Sources */ = {isa = PBXBuildFile; fileRef = A977DF34204337F400637496 /* Issue.swift */; };
 		A977DF45204337F500637496 /* JQLFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A977DF35204337F500637496 /* JQLFilter.swift */; };
-		A977DF46204337F500637496 /* IssueResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A977DF36204337F500637496 /* IssueResponse.swift */; };
 		A977DF5420433E1F00637496 /* JiraSwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A977DF5320433E1F00637496 /* JiraSwiftTests.swift */; };
 		A977DF5620433E1F00637496 /* JiraSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A977DEF22043242400637496 /* JiraSwift.framework */; };
 /* End PBXBuildFile section */
@@ -38,10 +40,15 @@
 
 /* Begin PBXFileReference section */
 		A957563E2046351300AC08C0 /* FileUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileUtils.swift; sourceTree = "<group>"; };
+		A957566520478DC600AC08C0 /* IssueResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueResponse.swift; sourceTree = "<group>"; };
+		A95756672047902100AC08C0 /* JSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSON.swift; sourceTree = "<group>"; };
+		A9575669204792F500AC08C0 /* Issue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Issue.swift; sourceTree = "<group>"; };
+		A9778ED62048B9440014BC68 /* BoardResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardResponse.swift; sourceTree = "<group>"; };
+		A9778ED82048BF990014BC68 /* SprintResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SprintResponse.swift; sourceTree = "<group>"; };
 		A977DEF22043242400637496 /* JiraSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JiraSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A977DEF52043242400637496 /* JiraSwift.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JiraSwift.h; sourceTree = "<group>"; };
 		A977DEF62043242400637496 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A977DF29204337F400637496 /* JiraAssignee.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JiraAssignee.swift; sourceTree = "<group>"; };
+		A977DF29204337F400637496 /* Assignee.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Assignee.swift; sourceTree = "<group>"; };
 		A977DF2A204337F400637496 /* Dictionary+URL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dictionary+URL.swift"; sourceTree = "<group>"; };
 		A977DF2B204337F400637496 /* RestClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestClient.swift; sourceTree = "<group>"; };
 		A977DF2C204337F400637496 /* Board.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
@@ -49,11 +56,8 @@
 		A977DF2F204337F400637496 /* IssueFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IssueFilter.swift; sourceTree = "<group>"; };
 		A977DF30204337F400637496 /* SimpleHttp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleHttp.swift; sourceTree = "<group>"; };
 		A977DF31204337F400637496 /* Sprint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sprint.swift; sourceTree = "<group>"; };
-		A977DF32204337F400637496 /* AgileResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AgileResponse.swift; sourceTree = "<group>"; };
 		A977DF33204337F400637496 /* String+Tools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Tools.swift"; sourceTree = "<group>"; };
-		A977DF34204337F400637496 /* Issue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Issue.swift; sourceTree = "<group>"; };
 		A977DF35204337F500637496 /* JQLFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JQLFilter.swift; sourceTree = "<group>"; };
-		A977DF36204337F500637496 /* IssueResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IssueResponse.swift; sourceTree = "<group>"; };
 		A977DF5120433E1E00637496 /* JiraSwiftTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JiraSwiftTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A977DF5320433E1F00637496 /* JiraSwiftTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JiraSwiftTests.swift; sourceTree = "<group>"; };
 		A977DF5520433E1F00637496 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -84,6 +88,7 @@
 				A977DF2A204337F400637496 /* Dictionary+URL.swift */,
 				A977DF33204337F400637496 /* String+Tools.swift */,
 				A957563E2046351300AC08C0 /* FileUtils.swift */,
+				A95756672047902100AC08C0 /* JSON.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -123,9 +128,9 @@
 			isa = PBXGroup;
 			children = (
 				A977DF2C204337F400637496 /* Board.swift */,
-				A977DF34204337F400637496 /* Issue.swift */,
+				A9575669204792F500AC08C0 /* Issue.swift */,
 				A977DF2F204337F400637496 /* IssueFilter.swift */,
-				A977DF29204337F400637496 /* JiraAssignee.swift */,
+				A977DF29204337F400637496 /* Assignee.swift */,
 				A977DF35204337F500637496 /* JQLFilter.swift */,
 				A977DF31204337F400637496 /* Sprint.swift */,
 			);
@@ -154,8 +159,9 @@
 		A977DF5D204340E400637496 /* JSON Parsing */ = {
 			isa = PBXGroup;
 			children = (
-				A977DF32204337F400637496 /* AgileResponse.swift */,
-				A977DF36204337F500637496 /* IssueResponse.swift */,
+				A9778ED62048B9440014BC68 /* BoardResponse.swift */,
+				A9778ED82048BF990014BC68 /* SprintResponse.swift */,
+				A957566520478DC600AC08C0 /* IssueResponse.swift */,
 			);
 			path = "JSON Parsing";
 			sourceTree = "<group>";
@@ -272,19 +278,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				A977DF45204337F500637496 /* JQLFilter.swift in Sources */,
-				A977DF44204337F500637496 /* Issue.swift in Sources */,
 				A977DF41204337F500637496 /* Sprint.swift in Sources */,
 				A977DF3F204337F500637496 /* IssueFilter.swift in Sources */,
-				A977DF39204337F500637496 /* JiraAssignee.swift in Sources */,
+				A977DF39204337F500637496 /* Assignee.swift in Sources */,
 				A957563F2046351300AC08C0 /* FileUtils.swift in Sources */,
-				A977DF46204337F500637496 /* IssueResponse.swift in Sources */,
 				A977DF3E204337F500637496 /* JiraRestClient.swift in Sources */,
 				A977DF40204337F500637496 /* SimpleHttp.swift in Sources */,
 				A977DF3C204337F500637496 /* Board.swift in Sources */,
 				A977DF43204337F500637496 /* String+Tools.swift in Sources */,
+				A9778ED92048BF990014BC68 /* SprintResponse.swift in Sources */,
+				A957566A204792F500AC08C0 /* Issue.swift in Sources */,
 				A977DF3B204337F500637496 /* RestClient.swift in Sources */,
 				A977DF3A204337F500637496 /* Dictionary+URL.swift in Sources */,
-				A977DF42204337F500637496 /* AgileResponse.swift in Sources */,
+				A957566620478DC600AC08C0 /* IssueResponse.swift in Sources */,
+				A9778ED72048B9440014BC68 /* BoardResponse.swift in Sources */,
+				A95756682047902100AC08C0 /* JSON.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

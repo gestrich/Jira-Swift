@@ -24,21 +24,21 @@ public class RestClient: NSObject {
         self.auth = auth
     }
     
-    func jsonFor(relativeURL: String, completion:@escaping ((NSDictionary) -> Void)){
+    func jsonDataFor(relativeURL: String, completion:@escaping ((Data) -> Void)){
         let urlString = baseURL.appending(relativeURL)
-        jsonFor(fullURL:urlString, completion:completion)
+        jsonDataFor(fullURL:urlString, completion:completion)
     }
     
-    func jsonFor(fullURL: String, completion:@escaping ((NSDictionary) -> Void)){
+    func jsonDataFor(fullURL: String, completion:@escaping ((Data) -> Void)){
         var headersToSet = ["Content-Type":"application/json", "Accept":"application/json"]
         if let headers = self.headers {
             headersToSet += headers
         }
         let http = SimpleHttp(auth:self.auth, headers:headersToSet);
         let url = URL(string: fullURL)!
-        http.getJSON(url:url, completion:completion, errorBlock:{
+        http.getJSONData(url:url, completion:completion, errorBlock:{
             print("Error Occurred")
         })
     }
-
+    
 }
