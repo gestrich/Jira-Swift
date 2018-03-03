@@ -28,7 +28,7 @@ public struct Issue : Codable {
         let epic: String?
         public var summary: String
         var fixVersions: [FixVersion]?
-        let assignee: Assignee?
+        public let assignee: Assignee?
         public var description : String?
         
         enum CodingKeys : String, CodingKey {
