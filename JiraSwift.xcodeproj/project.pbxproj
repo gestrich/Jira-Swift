@@ -26,6 +26,28 @@
 		A977DF45204337F500637496 /* JQLFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A977DF35204337F500637496 /* JQLFilter.swift */; };
 		A977DF5420433E1F00637496 /* JiraSwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A977DF5320433E1F00637496 /* JiraSwiftTests.swift */; };
 		A977DF5620433E1F00637496 /* JiraSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A977DEF22043242400637496 /* JiraSwift.framework */; };
+		A9F7C424204A225A00C25A5E /* JiraSwift_Mac.h in Headers */ = {isa = PBXBuildFile; fileRef = A9F7C422204A225A00C25A5E /* JiraSwift_Mac.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A9F7C42C204A233100C25A5E /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = A977DF2C204337F400637496 /* Board.swift */; };
+		A9F7C42D204A233300C25A5E /* (null) in Sources */ = {isa = PBXBuildFile; };
+		A9F7C42E204A233700C25A5E /* IssueFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A977DF2F204337F400637496 /* IssueFilter.swift */; };
+		A9F7C42F204A233900C25A5E /* Assignee.swift in Sources */ = {isa = PBXBuildFile; fileRef = A977DF29204337F400637496 /* Assignee.swift */; };
+		A9F7C430204A233C00C25A5E /* JQLFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A977DF35204337F500637496 /* JQLFilter.swift */; };
+		A9F7C434204A234500C25A5E /* Sprint.swift in Sources */ = {isa = PBXBuildFile; fileRef = A977DF31204337F400637496 /* Sprint.swift */; };
+		A9F7C435204A234500C25A5E /* (null) in Sources */ = {isa = PBXBuildFile; };
+		A9F7C436204A234500C25A5E /* (null) in Sources */ = {isa = PBXBuildFile; };
+		A9F7C437204A234900C25A5E /* JiraSwift.h in Headers */ = {isa = PBXBuildFile; fileRef = A977DEF52043242400637496 /* JiraSwift.h */; };
+		A9F7C438204A235500C25A5E /* JiraRestClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A977DF2E204337F400637496 /* JiraRestClient.swift */; };
+		A9F7C439204A235500C25A5E /* RestClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A977DF2B204337F400637496 /* RestClient.swift */; };
+		A9F7C43A204A235500C25A5E /* SimpleHttp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A977DF30204337F400637496 /* SimpleHttp.swift */; };
+		A9F7C43B204A235500C25A5E /* Dictionary+URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = A977DF2A204337F400637496 /* Dictionary+URL.swift */; };
+		A9F7C43C204A235500C25A5E /* String+Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = A977DF33204337F400637496 /* String+Tools.swift */; };
+		A9F7C43D204A235500C25A5E /* FileUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A957563E2046351300AC08C0 /* FileUtils.swift */; };
+		A9F7C43F204A25D800C25A5E /* Issue.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9575669204792F500AC08C0 /* Issue.swift */; };
+		A9F7C440204A25EA00C25A5E /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A977DEF62043242400637496 /* Info.plist */; };
+		A9F7C441204A25F800C25A5E /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = A95756672047902100AC08C0 /* JSON.swift */; };
+		A9F7C442204A260E00C25A5E /* BoardResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9778ED62048B9440014BC68 /* BoardResponse.swift */; };
+		A9F7C443204A261100C25A5E /* SprintResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9778ED82048BF990014BC68 /* SprintResponse.swift */; };
+		A9F7C444204A261300C25A5E /* IssueResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A957566520478DC600AC08C0 /* IssueResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +83,9 @@
 		A977DF5120433E1E00637496 /* JiraSwiftTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JiraSwiftTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A977DF5320433E1F00637496 /* JiraSwiftTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JiraSwiftTests.swift; sourceTree = "<group>"; };
 		A977DF5520433E1F00637496 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A9F7C420204A225A00C25A5E /* JiraSwift_Mac.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JiraSwift_Mac.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A9F7C422204A225A00C25A5E /* JiraSwift_Mac.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JiraSwift_Mac.h; sourceTree = "<group>"; };
+		A9F7C423204A225A00C25A5E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +101,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				A977DF5620433E1F00637496 /* JiraSwift.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A9F7C41C204A225A00C25A5E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -98,6 +130,7 @@
 			children = (
 				A977DEF42043242400637496 /* JiraSwift */,
 				A977DF5220433E1F00637496 /* JiraSwiftTests */,
+				A9F7C421204A225A00C25A5E /* JiraSwift_Mac */,
 				A977DEF32043242400637496 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -107,6 +140,7 @@
 			children = (
 				A977DEF22043242400637496 /* JiraSwift.framework */,
 				A977DF5120433E1E00637496 /* JiraSwiftTests.xctest */,
+				A9F7C420204A225A00C25A5E /* JiraSwift_Mac.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -166,6 +200,15 @@
 			path = "JSON Parsing";
 			sourceTree = "<group>";
 		};
+		A9F7C421204A225A00C25A5E /* JiraSwift_Mac */ = {
+			isa = PBXGroup;
+			children = (
+				A9F7C422204A225A00C25A5E /* JiraSwift_Mac.h */,
+				A9F7C423204A225A00C25A5E /* Info.plist */,
+			);
+			path = JiraSwift_Mac;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -174,6 +217,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				A977DEF72043242400637496 /* JiraSwift.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A9F7C41D204A225A00C25A5E /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A9F7C437204A234900C25A5E /* JiraSwift.h in Headers */,
+				A9F7C424204A225A00C25A5E /* JiraSwift_Mac.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -216,6 +268,24 @@
 			productReference = A977DF5120433E1E00637496 /* JiraSwiftTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		A9F7C41F204A225A00C25A5E /* JiraSwift_Mac */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A9F7C427204A225A00C25A5E /* Build configuration list for PBXNativeTarget "JiraSwift_Mac" */;
+			buildPhases = (
+				A9F7C41B204A225A00C25A5E /* Sources */,
+				A9F7C41C204A225A00C25A5E /* Frameworks */,
+				A9F7C41D204A225A00C25A5E /* Headers */,
+				A9F7C41E204A225A00C25A5E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = JiraSwift_Mac;
+			productName = JiraSwift_Mac;
+			productReference = A9F7C420204A225A00C25A5E /* JiraSwift_Mac.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -235,6 +305,10 @@
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
 					};
+					A9F7C41F204A225A00C25A5E = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
 				};
 			};
 			buildConfigurationList = A977DEEC2043242400637496 /* Build configuration list for PBXProject "JiraSwift" */;
@@ -251,6 +325,7 @@
 			targets = (
 				A977DEF12043242400637496 /* JiraSwift */,
 				A977DF5020433E1E00637496 /* JiraSwiftTests */,
+				A9F7C41F204A225A00C25A5E /* JiraSwift_Mac */,
 			);
 		};
 /* End PBXProject section */
@@ -267,6 +342,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A9F7C41E204A225A00C25A5E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A9F7C440204A25EA00C25A5E /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -301,6 +384,32 @@
 			buildActionMask = 2147483647;
 			files = (
 				A977DF5420433E1F00637496 /* JiraSwiftTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A9F7C41B204A225A00C25A5E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A9F7C443204A261100C25A5E /* SprintResponse.swift in Sources */,
+				A9F7C442204A260E00C25A5E /* BoardResponse.swift in Sources */,
+				A9F7C430204A233C00C25A5E /* JQLFilter.swift in Sources */,
+				A9F7C43A204A235500C25A5E /* SimpleHttp.swift in Sources */,
+				A9F7C42C204A233100C25A5E /* Board.swift in Sources */,
+				A9F7C42E204A233700C25A5E /* IssueFilter.swift in Sources */,
+				A9F7C42F204A233900C25A5E /* Assignee.swift in Sources */,
+				A9F7C43F204A25D800C25A5E /* Issue.swift in Sources */,
+				A9F7C43D204A235500C25A5E /* FileUtils.swift in Sources */,
+				A9F7C438204A235500C25A5E /* JiraRestClient.swift in Sources */,
+				A9F7C435204A234500C25A5E /* (null) in Sources */,
+				A9F7C43B204A235500C25A5E /* Dictionary+URL.swift in Sources */,
+				A9F7C43C204A235500C25A5E /* String+Tools.swift in Sources */,
+				A9F7C444204A261300C25A5E /* IssueResponse.swift in Sources */,
+				A9F7C42D204A233300C25A5E /* (null) in Sources */,
+				A9F7C436204A234500C25A5E /* (null) in Sources */,
+				A9F7C439204A235500C25A5E /* RestClient.swift in Sources */,
+				A9F7C434204A234500C25A5E /* Sprint.swift in Sources */,
+				A9F7C441204A25F800C25A5E /* JSON.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -501,6 +610,54 @@
 			};
 			name = Release;
 		};
+		A9F7C425204A225A00C25A5E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = "";
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = JiraSwift_Mac/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				PRODUCT_BUNDLE_IDENTIFIER = "org.gestrich.JiraSwift-Mac";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+			};
+			name = Debug;
+		};
+		A9F7C426204A225A00C25A5E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = "";
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = JiraSwift_Mac/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				PRODUCT_BUNDLE_IDENTIFIER = "org.gestrich.JiraSwift-Mac";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -527,6 +684,15 @@
 			buildConfigurations = (
 				A977DF5920433E1F00637496 /* Debug */,
 				A977DF5A20433E1F00637496 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A9F7C427204A225A00C25A5E /* Build configuration list for PBXNativeTarget "JiraSwift_Mac" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A9F7C425204A225A00C25A5E /* Debug */,
+				A9F7C426204A225A00C25A5E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
