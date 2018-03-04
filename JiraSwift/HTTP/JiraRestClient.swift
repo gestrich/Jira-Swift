@@ -15,13 +15,13 @@
 public class JiraRestClient: RestClient {
     
     
-    public func getBoards(completionBlock:@escaping ([Board]) -> Void) {
-        getBoards(startAt: 0, completionBlock: completionBlock)
+    public func getBoards(completionBlock:(@escaping ([Board]) -> Void), errorBlock:(@escaping (RestClientError) -> Void)) {
+        getBoards(startAt: 0, completionBlock: completionBlock, errorBlock:errorBlock)
     }
     
-    public func getBoards(startAt: Int, completionBlock:@escaping (([Board]) -> Void)) -> Void {
+    public func getBoards(startAt: Int, completionBlock:(@escaping ([Board]) -> Void), errorBlock:(@escaping (RestClientError) -> Void)) {
         
-        jsonDataFor(relativeURL: "agile/latest/board?startAt=\(startAt)") { (json) in
+        jsonDataFor(relativeURL: "agile/latest/board?startAt=\(startAt)", completionBlock: { (json) in
             
             let decoder = JSONDecoder()
             
@@ -32,38 +32,38 @@ public class JiraRestClient: RestClient {
                 if boardResponse.isLast == false {
                     self.getBoards(startAt: startAt + boardResponse.maxResults, completionBlock: { (blockBoards)  in
                         completionBlock(boards + blockBoards)
-                    })
+                    }, errorBlock:errorBlock)
                 } else {
                     completionBlock(boards)                    
                 }
             } catch {
-                print(error)
+                errorBlock(.deserialization(error))
             }
             
-        }
+        }, errorBlock:errorBlock)
     }
     
-    public func getCurrentSprintFor(board: Board, completion:@escaping ((Sprint?) -> Void)) -> Void {
-        getSprintsFor(board: board, completion:{ (sprints) in
+    public func getCurrentSprintFor(board: Board, completionBlock:(@escaping (Sprint?) -> Void), errorBlock:(@escaping (RestClientError) -> Void))  {
+        getSprintsFor(board: board, completionBlock:{ (sprints) in
             for sprint in sprints {
                 if sprint.state == "active" {
-                    completion(sprint)
+                    completionBlock(sprint)
                 }
             }            
             
-            completion(nil)
+            completionBlock(nil)
             
-        })
+        }, errorBlock:errorBlock)
         
     }
     
-    public func getSprintsFor(board: Board, completion:@escaping (([Sprint]) -> Void)) -> Void {
-        getSprintsFor(board: board, startAt: 0, completion: completion)
+    public func getSprintsFor(board: Board, completionBlock:(@escaping ([Sprint]) -> Void), errorBlock:(@escaping (RestClientError) -> Void)) {
+        getSprintsFor(board: board, startAt: 0, completionBlock: completionBlock, errorBlock:errorBlock)
     }
     
-    public func getSprintsFor(board: Board, startAt: Int, completion:@escaping (([Sprint]) -> Void)) -> Void {
+    public func getSprintsFor(board: Board, startAt: Int, completionBlock:(@escaping ([Sprint]) -> Void), errorBlock:(@escaping (RestClientError) -> Void))  {
         
-        jsonDataFor(relativeURL: "agile/latest/board/\(board.id)/sprint?startAt=\(startAt)") { (json) in
+        jsonDataFor(relativeURL: "agile/latest/board/\(board.id)/sprint?startAt=\(startAt)", completionBlock: { (json) in
             
             let decoder = JSONDecoder()
             
@@ -72,22 +72,22 @@ public class JiraRestClient: RestClient {
                 let sprints = sprintResponse.sprints
                 
                 if sprintResponse.isLast == false {
-                    self.getSprintsFor(board: board, startAt: startAt + sprintResponse.maxResults, completion: { (blockSprints)  in
-                        completion(sprints + blockSprints)
-                    })
+                    self.getSprintsFor(board: board, startAt: startAt + sprintResponse.maxResults, completionBlock: { (blockSprints)  in
+                        completionBlock(sprints + blockSprints)
+                    }, errorBlock:errorBlock)
                 } else {
-                    completion(sprints)                    
+                    completionBlock(sprints)                    
                 }
             } catch {
-                print(error)
+                errorBlock(.deserialization(error))
             }
             
-        }
+        }, errorBlock:errorBlock)
     }
     
-    public func issue(identifier: String, completionBlock:(@escaping (Issue) -> Void)){
+    public func issue(identifier: String, completionBlock:(@escaping (Issue) -> Void), errorBlock:(@escaping (RestClientError) -> Void))  {
         
-        jsonDataFor(relativeURL: "api/2/issue/\(identifier)") { json -> Void in
+        jsonDataFor(relativeURL: "api/2/issue/\(identifier)", completionBlock: { (json) in
             let decoder = JSONDecoder()
             
             do {
@@ -95,19 +95,19 @@ public class JiraRestClient: RestClient {
                 print(issue)
                 completionBlock(issue)
             } catch {
-                print(error)
+                errorBlock(.deserialization(error))
             }
-        }
-    }
-
-    public func issuesFor(board: Board, sprint: Sprint, completionBlock:(@escaping ([Issue]) -> Void)) {
-        //FIXME - The start thing should work properly with bleow method
-        let relativeURL = "agile/latest/board/\(board.id)/sprint/\(sprint.id)/issue?startAt="
-        issuesFor(relativeURL: relativeURL, startAt: 0, completionBlock: completionBlock)
+        }, errorBlock:errorBlock)
     }
     
-    public func issuesFor(relativeURL: String, startAt: Int, completionBlock:(@escaping ([Issue]) -> Void)){
-        jsonDataFor(relativeURL: relativeURL + "&startAt=\(startAt)") { json -> Void in
+    public func issuesFor(board: Board, sprint: Sprint, completionBlock:(@escaping ([Issue]) -> Void), errorBlock:(@escaping (RestClientError) -> Void)) {
+        //FIXME - The start thing should work properly with bleow method
+        let relativeURL = "agile/latest/board/\(board.id)/sprint/\(sprint.id)/issue?startAt="
+        issuesFor(relativeURL: relativeURL, startAt: 0, completionBlock: completionBlock, errorBlock:errorBlock)
+    }
+    
+    public func issuesFor(relativeURL: String, startAt: Int, completionBlock:(@escaping ([Issue]) -> Void), errorBlock:(@escaping (RestClientError) -> Void)){
+        jsonDataFor(relativeURL: relativeURL + "&startAt=\(startAt)", completionBlock: { (json) in
             
             let decoder = JSONDecoder()
             
@@ -119,24 +119,24 @@ public class JiraRestClient: RestClient {
                     //Recursive call to fetch next and add these results
                     self.issuesFor(relativeURL: relativeURL, startAt: nextIndexToFetch, completionBlock: { (nextIssues) in
                         completionBlock(issues + nextIssues)
-                    })
+                    }, errorBlock:errorBlock)
                 } else {
                     //Done, no more to fetch
                     completionBlock(issues)
                 }
                 
             } catch {
-                print(error)
+                errorBlock(.deserialization(error))
             }
-
-        }
+            
+        }, errorBlock:errorBlock)
     }
     
     
-    public func issuesFor(filter: JQLFilter, completionBlock:(@escaping ([Issue]) -> Void)){
+    public func issuesFor(filter: JQLFilter, completionBlock:(@escaping ([Issue]) -> Void), errorBlock:(@escaping (RestClientError) -> Void)) {
         let relativeUrl = "api/2/search?" + filter.getString()
         
-        issuesFor(relativeURL: relativeUrl, startAt: 0, completionBlock:completionBlock)
+        issuesFor(relativeURL: relativeUrl, startAt: 0, completionBlock:completionBlock, errorBlock:errorBlock)
     }
     
     

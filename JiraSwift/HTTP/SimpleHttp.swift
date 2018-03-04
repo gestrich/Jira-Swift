@@ -8,11 +8,6 @@
 
 //import Cocoa
 
-enum SimpleHttpError: Error {
-    case NoData
-    case JSONSerialization
-}
-
 public struct BasicAuth {
     let username : String
     let password : String
@@ -39,7 +34,7 @@ class SimpleHttp: NSObject {
         self.headers = headers
     }
     
-    func getJSONData(url: URL, completion:(@escaping (Data) -> Void), errorBlock:(@escaping () -> Void)){
+    func getJSONData(url: URL, completionBlock:(@escaping (Data) -> Void), errorBlock:(@escaping (RestClientError) -> Void)){
         let request = URLRequest(url: url)        
         
         let config = URLSessionConfiguration.default
@@ -61,27 +56,15 @@ class SimpleHttp: NSObject {
         let task = session.dataTask(with: request, completionHandler: { data, response, error in
             if let error = error {
                 print("Error while trying to re-authenticate the user: \(error)")
-                errorBlock()
+                errorBlock(.serviceError(error)) //Error
             } else if let response = response as? HTTPURLResponse,
                 300..<600 ~= response.statusCode {
-                print("Error while trying to re-authenticate the user, statusCode: \(response.statusCode)")
-                errorBlock()
-            } else {
-                do {
-                    guard let data = data else {
-                        print("No data available")
-                        throw(SimpleHttpError.NoData)
-                    }
-                    
-                    completion(data)
-                    //Call completion block here
-                    
-                } catch {
-                    print("Error")
-                    errorBlock()
-                }
+                errorBlock(.statusCode(response.statusCode)) //Error                
+            } else if let data = data {
+                completionBlock(data) //Success
+            } else { 
+                errorBlock(.noData) //Error
             }
-            
         }) 
         
         task.resume()

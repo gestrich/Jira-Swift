@@ -60,7 +60,7 @@ class JiraSwiftTests: XCTestCase {
             
             for board in boards {
                 if board.name == "" {
-//                    jiraClient.getSprintsFor(board: board, completion: { (sprints) in
+//                    jiraClient.getSprintsFor(board: board, completionBlock { (sprints) in
 //                        print(sprints)
 //                        expectation.fulfill()
 //                    })
