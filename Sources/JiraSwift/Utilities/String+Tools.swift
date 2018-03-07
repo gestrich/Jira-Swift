@@ -12,7 +12,7 @@ extension String {
     func regex (pattern: String, captureGroup: Int) -> [String] {
         do {
             let regex = try NSRegularExpression(pattern: pattern, options:.anchorsMatchLines)
-            let nsstr = self as NSString
+            let nsstr = NSString(string: self)
             let all = NSRange(location: 0, length: nsstr.length)
             var matches : [String] = [String]()
             regex.enumerateMatches(in: self, options: [], range: all) {
