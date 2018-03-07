@@ -6,7 +6,7 @@
 //  Copyright © 2017 Bill Gestrich. All rights reserved.
 //
 
-//import Cocoa
+import Foundation 
 
 //----------------
 // Rest API Reference: https://developer.atlassian.com/jiradev/jira-apis/jira-rest-apis/jira-rest-api-tutorials
