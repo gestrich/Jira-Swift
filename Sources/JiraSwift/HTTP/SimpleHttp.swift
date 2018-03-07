@@ -6,7 +6,7 @@
 //  Copyright © 2017 Bill Gestrich. All rights reserved.
 //
 
-//import Cocoa
+import Foundation 
 
 public struct BasicAuth {
     let username : String

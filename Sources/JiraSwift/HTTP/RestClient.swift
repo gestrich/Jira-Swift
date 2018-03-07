@@ -6,6 +6,8 @@
 //  Copyright © 2017 Bill Gestrich. All rights reserved.
 //
 
+import Foundation
+
 public enum RestClientError: Error {
     case serviceError(Error)
     case statusCode(Int)
