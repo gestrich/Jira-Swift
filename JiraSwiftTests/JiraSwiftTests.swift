@@ -55,28 +55,13 @@ class JiraSwiftTests: XCTestCase {
         
         let expectation = XCTestExpectation(description: "issuesForAsnc test")
         
-        jiraClient.getBoards { (boards) in
-//            print(boards)
-            
-            for board in boards {
-                if board.name == "" {
-//                    jiraClient.getSprintsFor(board: board, completionBlock { (sprints) in
-//                        print(sprints)
-//                        expectation.fulfill()
-//                    })
-                    
-                    jiraClient.getCurrentSprintFor(board: board) { 
-                        print($0 ?? "")
-                        expectation.fulfill()
-                    }
-                }
-            }
-            
-            
-            
-            
-            
-        }
+        jiraClient.getBoards(completionBlock: { (boards) in
+            print(boards)
+            expectation.fulfill()
+        }, errorBlock: { (error) in
+            print(error)
+            expectation.fulfill()
+        })
         
         wait(for: [expectation], timeout: 100.0)
 
