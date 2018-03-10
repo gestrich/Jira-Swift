@@ -31,12 +31,12 @@ public class RestClient: NSObject {
         self.auth = auth
     }
     
-    func jsonDataFor(relativeURL: String, completionBlock:@escaping ((Data) -> Void), errorBlock:(@escaping (RestClientError) -> Void)){
+    func jsonData(relativeURL: String, completionBlock:@escaping ((Data) -> Void), errorBlock:(@escaping (RestClientError) -> Void)){
         let urlString = baseURL.appending(relativeURL)
-        jsonDataFor(fullURL:urlString, completionBlock:completionBlock, errorBlock:errorBlock)
+        jsonData(fullURL:urlString, completionBlock:completionBlock, errorBlock:errorBlock)
     }
     
-    func jsonDataFor(fullURL: String, completionBlock:@escaping ((Data) -> Void), errorBlock:(@escaping (RestClientError) -> Void)){
+    func jsonData(fullURL: String, completionBlock:@escaping ((Data) -> Void), errorBlock:(@escaping (RestClientError) -> Void)){
         var headersToSet = ["Content-Type":"application/json", "Accept":"application/json"]
         if let headers = self.headers {
             headersToSet += headers

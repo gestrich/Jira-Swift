@@ -10,7 +10,6 @@ import Foundation
 
 public func getConfigurationFileVariable(key: String) -> String? {
     let keySeparator = "="
-//    let configurationPath = NSHomeDirectory().appending("/.jira_config")
     
     let configurationPath = "/Users/bill/.jira_config"
     guard let fileString = try? String(contentsOfFile: configurationPath) else {

@@ -6,11 +6,9 @@
 //  Copyright © 2017 Bill Gestrich. All rights reserved.
 //
 
-import Foundation 
+// Jira Rest API Reference: https://developer.atlassian.com/jiradev/jira-apis/jira-rest-apis/jira-rest-api-tutorials
 
-//----------------
-// Rest API Reference: https://developer.atlassian.com/jiradev/jira-apis/jira-rest-apis/jira-rest-api-tutorials
-//
+import Foundation 
 
 public class JiraRestClient: RestClient {
     
@@ -21,7 +19,7 @@ public class JiraRestClient: RestClient {
     
     public func getBoards(startAt: Int, completionBlock:(@escaping ([Board]) -> Void), errorBlock:(@escaping (RestClientError) -> Void)) {
         
-        jsonDataFor(relativeURL: "agile/latest/board?startAt=\(startAt)", completionBlock: { (json) in
+        jsonData(relativeURL: "agile/latest/board?startAt=\(startAt)", completionBlock: { (json) in
             
             let decoder = JSONDecoder()
             
@@ -43,8 +41,8 @@ public class JiraRestClient: RestClient {
         }, errorBlock:errorBlock)
     }
     
-    public func getCurrentSprintFor(board: Board, completionBlock:(@escaping (Sprint?) -> Void), errorBlock:(@escaping (RestClientError) -> Void))  {
-        getSprintsFor(board: board, completionBlock:{ (sprints) in
+    public func getCurrentSprint(for board: Board, completionBlock:(@escaping (Sprint?) -> Void), errorBlock:(@escaping (RestClientError) -> Void))  {
+        getSprints(for:board, completionBlock:{ (sprints) in
             for sprint in sprints {
                 if sprint.state == "active" {
                     completionBlock(sprint)
@@ -57,13 +55,13 @@ public class JiraRestClient: RestClient {
         
     }
     
-    public func getSprintsFor(board: Board, completionBlock:(@escaping ([Sprint]) -> Void), errorBlock:(@escaping (RestClientError) -> Void)) {
-        getSprintsFor(board: board, startAt: 0, completionBlock: completionBlock, errorBlock:errorBlock)
+    public func getSprints(for board:Board, completionBlock:(@escaping ([Sprint]) -> Void), errorBlock:(@escaping (RestClientError) -> Void)) {
+        getSprints(for: board, startAt: 0, completionBlock: completionBlock, errorBlock:errorBlock)
     }
     
-    public func getSprintsFor(board: Board, startAt: Int, completionBlock:(@escaping ([Sprint]) -> Void), errorBlock:(@escaping (RestClientError) -> Void))  {
+    public func getSprints(for board:Board, startAt: Int, completionBlock:(@escaping ([Sprint]) -> Void), errorBlock:(@escaping (RestClientError) -> Void))  {
         
-        jsonDataFor(relativeURL: "agile/latest/board/\(board.id)/sprint?startAt=\(startAt)", completionBlock: { (json) in
+        jsonData(relativeURL: "agile/latest/board/\(board.id)/sprint?startAt=\(startAt)", completionBlock: { (json) in
             
             let decoder = JSONDecoder()
             
@@ -72,7 +70,7 @@ public class JiraRestClient: RestClient {
                 let sprints = sprintResponse.sprints
                 
                 if sprintResponse.isLast == false {
-                    self.getSprintsFor(board: board, startAt: startAt + sprintResponse.maxResults, completionBlock: { (blockSprints)  in
+                    self.getSprints(for: board, startAt: startAt + sprintResponse.maxResults, completionBlock: { (blockSprints)  in
                         completionBlock(sprints + blockSprints)
                     }, errorBlock:errorBlock)
                 } else {
@@ -87,7 +85,7 @@ public class JiraRestClient: RestClient {
     
     public func issue(identifier: String, completionBlock:(@escaping (Issue) -> Void), errorBlock:(@escaping (RestClientError) -> Void))  {
         
-        jsonDataFor(relativeURL: "api/2/issue/\(identifier)", completionBlock: { (json) in
+        jsonData(relativeURL: "api/2/issue/\(identifier)", completionBlock: { (json) in
             let decoder = JSONDecoder()
             
             do {
@@ -100,14 +98,14 @@ public class JiraRestClient: RestClient {
         }, errorBlock:errorBlock)
     }
     
-    public func issuesFor(board: Board, sprint: Sprint, completionBlock:(@escaping ([Issue]) -> Void), errorBlock:(@escaping (RestClientError) -> Void)) {
+    public func issues(for board: Board, sprint: Sprint, completionBlock:(@escaping ([Issue]) -> Void), errorBlock:(@escaping (RestClientError) -> Void)) {
         //FIXME - The start thing should work properly with bleow method
         let relativeURL = "agile/latest/board/\(board.id)/sprint/\(sprint.id)/issue?startAt="
-        issuesFor(relativeURL: relativeURL, startAt: 0, completionBlock: completionBlock, errorBlock:errorBlock)
+        issues(for: relativeURL, startAt: 0, completionBlock: completionBlock, errorBlock:errorBlock)
     }
     
-    public func issuesFor(relativeURL: String, startAt: Int, completionBlock:(@escaping ([Issue]) -> Void), errorBlock:(@escaping (RestClientError) -> Void)){
-        jsonDataFor(relativeURL: relativeURL + "&startAt=\(startAt)", completionBlock: { (json) in
+    func issues(for relativeURL: String, startAt: Int, completionBlock:(@escaping ([Issue]) -> Void), errorBlock:(@escaping (RestClientError) -> Void)){
+        jsonData(relativeURL: relativeURL + "&startAt=\(startAt)", completionBlock: { (json) in
             
             let decoder = JSONDecoder()
             
@@ -117,7 +115,7 @@ public class JiraRestClient: RestClient {
                 let nextIndexToFetch = issueResponse.nextIndex()
                 if nextIndexToFetch >= 0 {
                     //Recursive call to fetch next and add these results
-                    self.issuesFor(relativeURL: relativeURL, startAt: nextIndexToFetch, completionBlock: { (nextIssues) in
+                    self.issues(for: relativeURL, startAt: nextIndexToFetch, completionBlock: { (nextIssues) in
                         completionBlock(issues + nextIssues)
                     }, errorBlock:errorBlock)
                 } else {
@@ -133,10 +131,10 @@ public class JiraRestClient: RestClient {
     }
     
     
-    public func issuesFor(filter: JQLFilter, completionBlock:(@escaping ([Issue]) -> Void), errorBlock:(@escaping (RestClientError) -> Void)) {
+    public func issues(for filter: JQLFilter, completionBlock:(@escaping ([Issue]) -> Void), errorBlock:(@escaping (RestClientError) -> Void)) {
         let relativeUrl = "api/2/search?" + filter.getString()
         
-        issuesFor(relativeURL: relativeUrl, startAt: 0, completionBlock:completionBlock, errorBlock:errorBlock)
+        issues(for: relativeUrl, startAt: 0, completionBlock:completionBlock, errorBlock:errorBlock)
     }
     
     
