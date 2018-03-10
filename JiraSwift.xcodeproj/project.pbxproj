@@ -79,9 +79,6 @@
 		OBJ_27 /* JSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSON.swift; sourceTree = "<group>"; };
 		OBJ_28 /* String+Tools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Tools.swift"; sourceTree = "<group>"; };
 		OBJ_31 /* JiraSwiftTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JiraSwiftTests.swift; sourceTree = "<group>"; };
-		OBJ_32 /* JiraSwift */ = {isa = PBXFileReference; lastKnownFileType = folder; path = JiraSwift; sourceTree = SOURCE_ROOT; };
-		OBJ_33 /* JiraSwift_Mac */ = {isa = PBXFileReference; lastKnownFileType = folder; path = JiraSwift_Mac; sourceTree = SOURCE_ROOT; };
-		OBJ_34 /* JiraSwiftTests */ = {isa = PBXFileReference; lastKnownFileType = folder; path = JiraSwiftTests; sourceTree = SOURCE_ROOT; };
 		OBJ_6 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -164,18 +161,14 @@
 			name = Products;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		OBJ_5 /*  */ = {
+		OBJ_5 = {
 			isa = PBXGroup;
 			children = (
 				OBJ_6 /* Package.swift */,
 				OBJ_7 /* Sources */,
 				OBJ_29 /* Tests */,
-				OBJ_32 /* JiraSwift */,
-				OBJ_33 /* JiraSwift_Mac */,
-				OBJ_34 /* JiraSwiftTests */,
 				OBJ_35 /* Products */,
 			);
-			name = "";
 			sourceTree = "<group>";
 		};
 		OBJ_7 /* Sources */ = {
@@ -273,7 +266,7 @@
 			knownRegions = (
 				en,
 			);
-			mainGroup = OBJ_5 /*  */;
+			mainGroup = OBJ_5;
 			productRefGroup = OBJ_35 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
