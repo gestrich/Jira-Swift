@@ -37,7 +37,6 @@
 		OBJ_68 /* JQLFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_22 /* JQLFilter.swift */; };
 		OBJ_69 /* Sprint.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_23 /* Sprint.swift */; };
 		OBJ_70 /* Dictionary+URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_25 /* Dictionary+URL.swift */; };
-		OBJ_71 /* FileUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_26 /* FileUtils.swift */; };
 		OBJ_72 /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_27 /* JSON.swift */; };
 		OBJ_73 /* String+Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_28 /* String+Tools.swift */; };
 /* End PBXBuildFile section */
@@ -75,7 +74,6 @@
 		OBJ_22 /* JQLFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JQLFilter.swift; sourceTree = "<group>"; };
 		OBJ_23 /* Sprint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sprint.swift; sourceTree = "<group>"; };
 		OBJ_25 /* Dictionary+URL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dictionary+URL.swift"; sourceTree = "<group>"; };
-		OBJ_26 /* FileUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileUtils.swift; sourceTree = "<group>"; };
 		OBJ_27 /* JSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSON.swift; sourceTree = "<group>"; };
 		OBJ_28 /* String+Tools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Tools.swift"; sourceTree = "<group>"; };
 		OBJ_31 /* JiraSwiftTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JiraSwiftTests.swift; sourceTree = "<group>"; };
@@ -128,7 +126,6 @@
 			isa = PBXGroup;
 			children = (
 				OBJ_25 /* Dictionary+URL.swift */,
-				OBJ_26 /* FileUtils.swift */,
 				OBJ_27 /* JSON.swift */,
 				OBJ_28 /* String+Tools.swift */,
 			);
@@ -313,7 +310,6 @@
 				OBJ_68 /* JQLFilter.swift in Sources */,
 				OBJ_69 /* Sprint.swift in Sources */,
 				OBJ_70 /* Dictionary+URL.swift in Sources */,
-				OBJ_71 /* FileUtils.swift in Sources */,
 				OBJ_72 /* JSON.swift in Sources */,
 				OBJ_73 /* String+Tools.swift in Sources */,
 			);
