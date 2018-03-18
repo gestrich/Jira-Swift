@@ -21,7 +21,6 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		A977B8E4205E84C8005F61AF /* JiraSwift_iOS.h in Headers */ = {isa = PBXBuildFile; fileRef = A977B8E2205E84C8005F61AF /* JiraSwift_iOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A977B8F7205E8504005F61AF /* JiraRestClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_10 /* JiraRestClient.swift */; };
 		A977B8F8205E8504005F61AF /* RestClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_11 /* RestClient.swift */; };
 		A977B8F9205E8504005F61AF /* SimpleHttp.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_12 /* SimpleHttp.swift */; };
@@ -37,6 +36,7 @@
 		A977B903205E8504005F61AF /* Dictionary+URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_25 /* Dictionary+URL.swift */; };
 		A977B904205E8504005F61AF /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_27 /* JSON.swift */; };
 		A977B905205E8504005F61AF /* String+Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_28 /* String+Tools.swift */; };
+		A977B92C205E8EE3005F61AF /* JiraSwift_iOS.h in Headers */ = {isa = PBXBuildFile; fileRef = A977B8E2205E84C8005F61AF /* JiraSwift_iOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		OBJ_43 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_6 /* Package.swift */; };
 		OBJ_49 /* JiraSwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_31 /* JiraSwiftTests.swift */; };
 		OBJ_51 /* JiraSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "JiraSwift::JiraSwift::Product" /* JiraSwift.framework */; };
@@ -242,7 +242,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A977B8E4205E84C8005F61AF /* JiraSwift_iOS.h in Headers */,
+				A977B92C205E8EE3005F61AF /* JiraSwift_iOS.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -253,9 +253,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A977B8E7205E84C8005F61AF /* Build configuration list for PBXNativeTarget "JiraSwift-iOS" */;
 			buildPhases = (
+				A977B8DD205E84C8005F61AF /* Headers */,
 				A977B8DB205E84C8005F61AF /* Sources */,
 				A977B8DC205E84C8005F61AF /* Frameworks */,
-				A977B8DD205E84C8005F61AF /* Headers */,
 				A977B8DE205E84C8005F61AF /* Resources */,
 			);
 			buildRules = (
