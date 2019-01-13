@@ -45,5 +45,21 @@ public class RestClient: NSObject {
         let url = URL(string: fullURL)!
         http.getJSONData(url:url, completionBlock:completionBlock, errorBlock:errorBlock)
     }
+
+    func uploadFile(filePath: String, relativeDestinationPath: String, completionBlock:@escaping ((Data) -> Void), errorBlock:(@escaping (RestClientError) -> Void)){
+        let fullDestinationPath = baseURL.appending(relativeDestinationPath)
+        uploadFile(filePath: filePath, fullDestinationPath: fullDestinationPath, completionBlock: completionBlock, errorBlock: errorBlock)
+    }
+    
+    func uploadFile(filePath: String, fullDestinationPath: String, completionBlock:@escaping ((Data) -> Void), errorBlock:(@escaping (RestClientError) -> Void)){
+        var headersToSet = ["Accept":"application/json", "X-Atlassian-Token":"nocheck"]
+        if let headers = self.headers {
+            headersToSet += headers
+        }
+        let http = SimpleHttp(auth:self.auth, headers:headersToSet)
+        let destinationURL = URL(string: fullDestinationPath)!
+        let fileURL = URL(string: filePath)!
+        http.uploadFile(fileUrl: fileURL, destinationURL: destinationURL, completionBlock: completionBlock, errorBlock: errorBlock)
+    }
     
 }

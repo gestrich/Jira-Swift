@@ -137,6 +137,15 @@ public class JiraRestClient: RestClient {
         issues(for: relativeUrl, startAt: 0, completionBlock:completionBlock, errorBlock:errorBlock)
     }
     
+    public func uploadFile(filePath: String, issueIdentifier: String, completionBlock:(@escaping () -> Void), errorBlock:(@escaping (RestClientError) -> Void))  {
+        
+        uploadFile(filePath: filePath, relativeDestinationPath: "api/2/issue/\(issueIdentifier)/attachments", completionBlock: { (data) in
+            //TODO: Validate the JSON data here.
+            completionBlock()
+        }, errorBlock:errorBlock)
+        
+    }
+    
     
     //All Sprints for board
     //        curl -u username:password -X GET -H "Content-Type: application/json" "<Base URL>/agile/latest/board/10/sprint" | python -m json.tool | less

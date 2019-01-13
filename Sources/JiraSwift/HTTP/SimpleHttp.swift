@@ -70,6 +70,61 @@ class SimpleHttp: NSObject {
         task.resume()
     }
     
+    func uploadFile(fileUrl: URL, destinationURL: URL, completionBlock:(@escaping (Data) -> Void), errorBlock:(@escaping (RestClientError) -> Void)){
+        
+        let fileName = (fileUrl.path as NSString).lastPathComponent
+        let fileData = FileManager.default.contents(atPath: fileUrl.path)!
+        let parameterNameForFile = "file" //TODO: move out of here as this is jira api specific
+        
+        var urlRequest = URLRequest(url: destinationURL)
+        urlRequest.httpMethod = "POST"
+        
+        let config = URLSessionConfiguration.default
+        
+        var headers = [String: String]()
+        if let auth = self.auth {
+            var authString = ""
+            let userPasswordData = "\(auth.username):\(auth.password)".data(using: .utf8)
+            let base64EncodedCredential = userPasswordData!.base64EncodedString(options: Data.Base64EncodingOptions.init(rawValue: 0))
+            authString = "Basic \(base64EncodedCredential)"
+            headers["authorization"] = authString
+        }
+        
+        headers += self.headers
+        config.httpAdditionalHeaders = headers
+        
+        let boundary = UUID().uuidString
+        urlRequest.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
+        
+        var data = Data()
+        
+        data.append("\r\n--\(boundary)\r\n".data(using: .utf8)!)
+        data.append("Content-Disposition: form-data; name=\"\(parameterNameForFile)\"; filename=\"\(fileName)\"\r\n".data(using: .utf8)!)
+        
+        let contentType = "application/octet-stream"
+        data.append("Content-Type: \(contentType)\r\n\r\n".data(using: .utf8)!)
+        data.append(fileData)
+        data.append("\r\n--\(boundary)--\r\n".data(using: .utf8)!)
+        
+        let session: URLSession = URLSession(configuration: config, delegate: nil, delegateQueue: nil)
+
+         let task = session.uploadTask(with: urlRequest, from: data, completionHandler: { responseData, response, error in
+            if let error = error {
+                print("Error while trying to re-authenticate the user: \(error)")
+                errorBlock(.serviceError(error)) //Error
+            } else if let response = response as? HTTPURLResponse,
+                300..<600 ~= response.statusCode {
+                errorBlock(.statusCode(response.statusCode)) //Error
+            } else if let data = responseData {
+                completionBlock(data) //Success
+            } else {
+                errorBlock(.noData) //Error
+            }
+        })
+        
+        task.resume()
+    }
+    
 }
 
 func += <K, V> (left: inout [K:V], right: [K:V]) { 
