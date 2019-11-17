@@ -8,7 +8,8 @@
 
 // Jira Rest API Reference: https://developer.atlassian.com/jiradev/jira-apis/jira-rest-apis/jira-rest-api-tutorials
 
-import Foundation 
+import Foundation
+
 
 public class JiraRestClient: RestClient {
     
