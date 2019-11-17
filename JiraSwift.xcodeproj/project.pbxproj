@@ -1,1041 +1,827 @@
 // !$*UTF8*$!
 {
-   archiveVersion = "1";
-   objectVersion = "46";
-   objects = {
-      "JiraSwift::JiraSwift" = {
-         isa = "PBXNativeTarget";
-         buildConfigurationList = "OBJ_47";
-         buildPhases = (
-            "OBJ_50",
-            "OBJ_64"
-         );
-         dependencies = (
-            "OBJ_66"
-         );
-         name = "JiraSwift";
-         productName = "JiraSwift";
-         productReference = "JiraSwift::JiraSwift::Product";
-         productType = "com.apple.product-type.framework";
-      };
-      "JiraSwift::JiraSwift::Product" = {
-         isa = "PBXFileReference";
-         path = "JiraSwift.framework";
-         sourceTree = "BUILT_PRODUCTS_DIR";
-      };
-      "JiraSwift::JiraSwiftPackageTests::ProductTarget" = {
-         isa = "PBXAggregateTarget";
-         buildConfigurationList = "OBJ_75";
-         buildPhases = (
-         );
-         dependencies = (
-            "OBJ_78"
-         );
-         name = "JiraSwiftPackageTests";
-         productName = "JiraSwiftPackageTests";
-      };
-      "JiraSwift::JiraSwiftTests" = {
-         isa = "PBXNativeTarget";
-         buildConfigurationList = "OBJ_80";
-         buildPhases = (
-            "OBJ_83",
-            "OBJ_85"
-         );
-         dependencies = (
-            "OBJ_88",
-            "OBJ_89"
-         );
-         name = "JiraSwiftTests";
-         productName = "JiraSwiftTests";
-         productReference = "JiraSwift::JiraSwiftTests::Product";
-         productType = "com.apple.product-type.bundle.unit-test";
-      };
-      "JiraSwift::JiraSwiftTests::Product" = {
-         isa = "PBXFileReference";
-         path = "JiraSwiftTests.xctest";
-         sourceTree = "BUILT_PRODUCTS_DIR";
-      };
-      "JiraSwift::SwiftPMPackageDescription" = {
-         isa = "PBXNativeTarget";
-         buildConfigurationList = "OBJ_69";
-         buildPhases = (
-            "OBJ_72"
-         );
-         dependencies = (
-         );
-         name = "JiraSwiftPackageDescription";
-         productName = "JiraSwiftPackageDescription";
-         productType = "com.apple.product-type.framework";
-      };
-      "OBJ_1" = {
-         isa = "PBXProject";
-         attributes = {
-            LastSwiftMigration = "9999";
-            LastUpgradeCheck = "9999";
-         };
-         buildConfigurationList = "OBJ_2";
-         compatibilityVersion = "Xcode 3.2";
-         developmentRegion = "en";
-         hasScannedForEncodings = "0";
-         knownRegions = (
-            "en"
-         );
-         mainGroup = "OBJ_5";
-         productRefGroup = "OBJ_40";
-         projectDirPath = ".";
-         targets = (
-            "JiraSwift::JiraSwift",
-            "JiraSwift::SwiftPMPackageDescription",
-            "JiraSwift::JiraSwiftPackageTests::ProductTarget",
-            "JiraSwift::JiraSwiftTests",
-            "swift-utilities::swift-utilities",
-            "swift-utilities::SwiftPMPackageDescription"
-         );
-      };
-      "OBJ_10" = {
-         isa = "PBXGroup";
-         children = (
-            "OBJ_11"
-         );
-         name = "HTTP";
-         path = "HTTP";
-         sourceTree = "<group>";
-      };
-      "OBJ_100" = {
-         isa = "PBXFrameworksBuildPhase";
-         files = (
-         );
-      };
-      "OBJ_102" = {
-         isa = "XCConfigurationList";
-         buildConfigurations = (
-            "OBJ_103",
-            "OBJ_104"
-         );
-         defaultConfigurationIsVisible = "0";
-         defaultConfigurationName = "Release";
-      };
-      "OBJ_103" = {
-         isa = "XCBuildConfiguration";
-         buildSettings = {
-            LD = "/usr/bin/true";
-            OTHER_SWIFT_FLAGS = (
-               "-swift-version",
-               "5",
-               "-I",
-               "$(TOOLCHAIN_DIR)/usr/lib/swift/pm/4_2",
-               "-target",
-               "x86_64-apple-macosx10.10",
-               "-sdk",
-               "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk",
-               "-package-description-version",
-               "5.1"
-            );
-            SWIFT_VERSION = "5.0";
-         };
-         name = "Debug";
-      };
-      "OBJ_104" = {
-         isa = "XCBuildConfiguration";
-         buildSettings = {
-            LD = "/usr/bin/true";
-            OTHER_SWIFT_FLAGS = (
-               "-swift-version",
-               "5",
-               "-I",
-               "$(TOOLCHAIN_DIR)/usr/lib/swift/pm/4_2",
-               "-target",
-               "x86_64-apple-macosx10.10",
-               "-sdk",
-               "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk",
-               "-package-description-version",
-               "5.1"
-            );
-            SWIFT_VERSION = "5.0";
-         };
-         name = "Release";
-      };
-      "OBJ_105" = {
-         isa = "PBXSourcesBuildPhase";
-         files = (
-            "OBJ_106"
-         );
-      };
-      "OBJ_106" = {
-         isa = "PBXBuildFile";
-         fileRef = "OBJ_39";
-      };
-      "OBJ_11" = {
-         isa = "PBXFileReference";
-         path = "JiraRestClient.swift";
-         sourceTree = "<group>";
-      };
-      "OBJ_12" = {
-         isa = "PBXGroup";
-         children = (
-            "OBJ_13",
-            "OBJ_14",
-            "OBJ_15"
-         );
-         name = "JSON Parsing";
-         path = "JSON Parsing";
-         sourceTree = "<group>";
-      };
-      "OBJ_13" = {
-         isa = "PBXFileReference";
-         path = "BoardResponse.swift";
-         sourceTree = "<group>";
-      };
-      "OBJ_14" = {
-         isa = "PBXFileReference";
-         path = "IssueResponse.swift";
-         sourceTree = "<group>";
-      };
-      "OBJ_15" = {
-         isa = "PBXFileReference";
-         path = "SprintResponse.swift";
-         sourceTree = "<group>";
-      };
-      "OBJ_16" = {
-         isa = "PBXGroup";
-         children = (
-            "OBJ_17",
-            "OBJ_18",
-            "OBJ_19",
-            "OBJ_20",
-            "OBJ_21",
-            "OBJ_22"
-         );
-         name = "Jira Models";
-         path = "Jira Models";
-         sourceTree = "<group>";
-      };
-      "OBJ_17" = {
-         isa = "PBXFileReference";
-         path = "Assignee.swift";
-         sourceTree = "<group>";
-      };
-      "OBJ_18" = {
-         isa = "PBXFileReference";
-         path = "Board.swift";
-         sourceTree = "<group>";
-      };
-      "OBJ_19" = {
-         isa = "PBXFileReference";
-         path = "Issue.swift";
-         sourceTree = "<group>";
-      };
-      "OBJ_2" = {
-         isa = "XCConfigurationList";
-         buildConfigurations = (
-            "OBJ_3",
-            "OBJ_4"
-         );
-         defaultConfigurationIsVisible = "0";
-         defaultConfigurationName = "Release";
-      };
-      "OBJ_20" = {
-         isa = "PBXFileReference";
-         path = "IssueFilter.swift";
-         sourceTree = "<group>";
-      };
-      "OBJ_21" = {
-         isa = "PBXFileReference";
-         path = "JQLFilter.swift";
-         sourceTree = "<group>";
-      };
-      "OBJ_22" = {
-         isa = "PBXFileReference";
-         path = "Sprint.swift";
-         sourceTree = "<group>";
-      };
-      "OBJ_23" = {
-         isa = "PBXGroup";
-         children = (
-            "OBJ_24",
-            "OBJ_25",
-            "OBJ_26"
-         );
-         name = "Utilities";
-         path = "Utilities";
-         sourceTree = "<group>";
-      };
-      "OBJ_24" = {
-         isa = "PBXFileReference";
-         path = "Dictionary+URL.swift";
-         sourceTree = "<group>";
-      };
-      "OBJ_25" = {
-         isa = "PBXFileReference";
-         path = "JSON.swift";
-         sourceTree = "<group>";
-      };
-      "OBJ_26" = {
-         isa = "PBXFileReference";
-         path = "String+Tools.swift";
-         sourceTree = "<group>";
-      };
-      "OBJ_27" = {
-         isa = "PBXGroup";
-         children = (
-            "OBJ_28"
-         );
-         name = "Tests";
-         path = "";
-         sourceTree = "SOURCE_ROOT";
-      };
-      "OBJ_28" = {
-         isa = "PBXGroup";
-         children = (
-            "OBJ_29"
-         );
-         name = "JiraSwiftTests";
-         path = "Tests/JiraSwiftTests";
-         sourceTree = "SOURCE_ROOT";
-      };
-      "OBJ_29" = {
-         isa = "PBXFileReference";
-         path = "JiraSwiftTests.swift";
-         sourceTree = "<group>";
-      };
-      "OBJ_3" = {
-         isa = "XCBuildConfiguration";
-         buildSettings = {
-            CLANG_ENABLE_OBJC_ARC = "YES";
-            COMBINE_HIDPI_IMAGES = "YES";
-            COPY_PHASE_STRIP = "NO";
-            DEBUG_INFORMATION_FORMAT = "dwarf";
-            DYLIB_INSTALL_NAME_BASE = "@rpath";
-            ENABLE_NS_ASSERTIONS = "YES";
-            GCC_OPTIMIZATION_LEVEL = "0";
-            GCC_PREPROCESSOR_DEFINITIONS = (
-               "$(inherited)",
-               "SWIFT_PACKAGE=1",
-               "DEBUG=1"
-            );
-            MACOSX_DEPLOYMENT_TARGET = "10.10";
-            ONLY_ACTIVE_ARCH = "YES";
-            OTHER_SWIFT_FLAGS = (
-               "$(inherited)",
-               "-DXcode"
-            );
-            PRODUCT_NAME = "$(TARGET_NAME)";
-            SDKROOT = "macosx";
-            SUPPORTED_PLATFORMS = (
-               "macosx",
-               "iphoneos",
-               "iphonesimulator",
-               "appletvos",
-               "appletvsimulator",
-               "watchos",
-               "watchsimulator"
-            );
-            SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
-               "$(inherited)",
-               "SWIFT_PACKAGE",
-               "DEBUG"
-            );
-            SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-            USE_HEADERMAP = "NO";
-         };
-         name = "Debug";
-      };
-      "OBJ_30" = {
-         isa = "PBXGroup";
-         children = (
-            "OBJ_31"
-         );
-         name = "Dependencies";
-         path = "";
-         sourceTree = "<group>";
-      };
-      "OBJ_31" = {
-         isa = "PBXGroup";
-         children = (
-            "OBJ_32",
-            "OBJ_39"
-         );
-         name = "swift-utilities";
-         path = "";
-         sourceTree = "SOURCE_ROOT";
-      };
-      "OBJ_32" = {
-         isa = "PBXGroup";
-         children = (
-            "OBJ_33",
-            "OBJ_34",
-            "OBJ_35",
-            "OBJ_36",
-            "OBJ_37",
-            "OBJ_38"
-         );
-         name = "swift-utilities";
-         path = ".build/checkouts/swift-utilities/Sources/swift-utilities";
-         sourceTree = "SOURCE_ROOT";
-      };
-      "OBJ_33" = {
-         isa = "PBXFileReference";
-         path = "Dictionary+URL.swift";
-         sourceTree = "<group>";
-      };
-      "OBJ_34" = {
-         isa = "PBXFileReference";
-         path = "FileUtils.swift";
-         sourceTree = "<group>";
-      };
-      "OBJ_35" = {
-         isa = "PBXFileReference";
-         path = "NSRegularExpressions+Utils.swift";
-         sourceTree = "<group>";
-      };
-      "OBJ_36" = {
-         isa = "PBXFileReference";
-         path = "RestClient.swift";
-         sourceTree = "<group>";
-      };
-      "OBJ_37" = {
-         isa = "PBXFileReference";
-         path = "SimpleHttp.swift";
-         sourceTree = "<group>";
-      };
-      "OBJ_38" = {
-         isa = "PBXFileReference";
-         path = "String+Tools.swift";
-         sourceTree = "<group>";
-      };
-      "OBJ_39" = {
-         isa = "PBXFileReference";
-         explicitFileType = "sourcecode.swift";
-         name = "Package.swift";
-         path = "/Users/bill/dev/jira/JiraSwift/.build/checkouts/swift-utilities/Package.swift";
-         sourceTree = "<group>";
-      };
-      "OBJ_4" = {
-         isa = "XCBuildConfiguration";
-         buildSettings = {
-            CLANG_ENABLE_OBJC_ARC = "YES";
-            COMBINE_HIDPI_IMAGES = "YES";
-            COPY_PHASE_STRIP = "YES";
-            DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-            DYLIB_INSTALL_NAME_BASE = "@rpath";
-            GCC_OPTIMIZATION_LEVEL = "s";
-            GCC_PREPROCESSOR_DEFINITIONS = (
-               "$(inherited)",
-               "SWIFT_PACKAGE=1"
-            );
-            MACOSX_DEPLOYMENT_TARGET = "10.10";
-            OTHER_SWIFT_FLAGS = (
-               "$(inherited)",
-               "-DXcode"
-            );
-            PRODUCT_NAME = "$(TARGET_NAME)";
-            SDKROOT = "macosx";
-            SUPPORTED_PLATFORMS = (
-               "macosx",
-               "iphoneos",
-               "iphonesimulator",
-               "appletvos",
-               "appletvsimulator",
-               "watchos",
-               "watchsimulator"
-            );
-            SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
-               "$(inherited)",
-               "SWIFT_PACKAGE"
-            );
-            SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-            USE_HEADERMAP = "NO";
-         };
-         name = "Release";
-      };
-      "OBJ_40" = {
-         isa = "PBXGroup";
-         children = (
-            "swift-utilities::swift-utilities::Product",
-            "JiraSwift::JiraSwiftTests::Product",
-            "JiraSwift::JiraSwift::Product"
-         );
-         name = "Products";
-         path = "";
-         sourceTree = "BUILT_PRODUCTS_DIR";
-      };
-      "OBJ_44" = {
-         isa = "PBXFileReference";
-         path = "JiraSwift-iOS";
-         sourceTree = "SOURCE_ROOT";
-      };
-      "OBJ_45" = {
-         isa = "PBXFileReference";
-         path = "README.md";
-         sourceTree = "<group>";
-      };
-      "OBJ_47" = {
-         isa = "XCConfigurationList";
-         buildConfigurations = (
-            "OBJ_48",
-            "OBJ_49"
-         );
-         defaultConfigurationIsVisible = "0";
-         defaultConfigurationName = "Release";
-      };
-      "OBJ_48" = {
-         isa = "XCBuildConfiguration";
-         buildSettings = {
-            ENABLE_TESTABILITY = "YES";
-            FRAMEWORK_SEARCH_PATHS = (
-               "$(inherited)",
-               "$(PLATFORM_DIR)/Developer/Library/Frameworks"
-            );
-            HEADER_SEARCH_PATHS = (
-               "$(inherited)"
-            );
-            INFOPLIST_FILE = "JiraSwift.xcodeproj/JiraSwift_Info.plist";
-            LD_RUNPATH_SEARCH_PATHS = (
-               "$(inherited)",
-               "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx"
-            );
-            OTHER_CFLAGS = (
-               "$(inherited)"
-            );
-            OTHER_LDFLAGS = (
-               "$(inherited)"
-            );
-            OTHER_SWIFT_FLAGS = (
-               "$(inherited)"
-            );
-            PRODUCT_BUNDLE_IDENTIFIER = "JiraSwift";
-            PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
-            PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-            SKIP_INSTALL = "YES";
-            SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
-               "$(inherited)"
-            );
-            SWIFT_VERSION = "4.0";
-            TARGET_NAME = "JiraSwift";
-         };
-         name = "Debug";
-      };
-      "OBJ_49" = {
-         isa = "XCBuildConfiguration";
-         buildSettings = {
-            ENABLE_TESTABILITY = "YES";
-            FRAMEWORK_SEARCH_PATHS = (
-               "$(inherited)",
-               "$(PLATFORM_DIR)/Developer/Library/Frameworks"
-            );
-            HEADER_SEARCH_PATHS = (
-               "$(inherited)"
-            );
-            INFOPLIST_FILE = "JiraSwift.xcodeproj/JiraSwift_Info.plist";
-            LD_RUNPATH_SEARCH_PATHS = (
-               "$(inherited)",
-               "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx"
-            );
-            OTHER_CFLAGS = (
-               "$(inherited)"
-            );
-            OTHER_LDFLAGS = (
-               "$(inherited)"
-            );
-            OTHER_SWIFT_FLAGS = (
-               "$(inherited)"
-            );
-            PRODUCT_BUNDLE_IDENTIFIER = "JiraSwift";
-            PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
-            PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-            SKIP_INSTALL = "YES";
-            SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
-               "$(inherited)"
-            );
-            SWIFT_VERSION = "4.0";
-            TARGET_NAME = "JiraSwift";
-         };
-         name = "Release";
-      };
-      "OBJ_5" = {
-         isa = "PBXGroup";
-         children = (
-            "OBJ_6",
-            "OBJ_7",
-            "OBJ_27",
-            "OBJ_30",
-            "OBJ_40",
-            "OBJ_44",
-            "OBJ_45"
-         );
-         path = "";
-         sourceTree = "<group>";
-      };
-      "OBJ_50" = {
-         isa = "PBXSourcesBuildPhase";
-         files = (
-            "OBJ_51",
-            "OBJ_52",
-            "OBJ_53",
-            "OBJ_54",
-            "OBJ_55",
-            "OBJ_56",
-            "OBJ_57",
-            "OBJ_58",
-            "OBJ_59",
-            "OBJ_60",
-            "OBJ_61",
-            "OBJ_62",
-            "OBJ_63"
-         );
-      };
-      "OBJ_51" = {
-         isa = "PBXBuildFile";
-         fileRef = "OBJ_11";
-      };
-      "OBJ_52" = {
-         isa = "PBXBuildFile";
-         fileRef = "OBJ_13";
-      };
-      "OBJ_53" = {
-         isa = "PBXBuildFile";
-         fileRef = "OBJ_14";
-      };
-      "OBJ_54" = {
-         isa = "PBXBuildFile";
-         fileRef = "OBJ_15";
-      };
-      "OBJ_55" = {
-         isa = "PBXBuildFile";
-         fileRef = "OBJ_17";
-      };
-      "OBJ_56" = {
-         isa = "PBXBuildFile";
-         fileRef = "OBJ_18";
-      };
-      "OBJ_57" = {
-         isa = "PBXBuildFile";
-         fileRef = "OBJ_19";
-      };
-      "OBJ_58" = {
-         isa = "PBXBuildFile";
-         fileRef = "OBJ_20";
-      };
-      "OBJ_59" = {
-         isa = "PBXBuildFile";
-         fileRef = "OBJ_21";
-      };
-      "OBJ_6" = {
-         isa = "PBXFileReference";
-         explicitFileType = "sourcecode.swift";
-         path = "Package.swift";
-         sourceTree = "<group>";
-      };
-      "OBJ_60" = {
-         isa = "PBXBuildFile";
-         fileRef = "OBJ_22";
-      };
-      "OBJ_61" = {
-         isa = "PBXBuildFile";
-         fileRef = "OBJ_24";
-      };
-      "OBJ_62" = {
-         isa = "PBXBuildFile";
-         fileRef = "OBJ_25";
-      };
-      "OBJ_63" = {
-         isa = "PBXBuildFile";
-         fileRef = "OBJ_26";
-      };
-      "OBJ_64" = {
-         isa = "PBXFrameworksBuildPhase";
-         files = (
-            "OBJ_65"
-         );
-      };
-      "OBJ_65" = {
-         isa = "PBXBuildFile";
-         fileRef = "swift-utilities::swift-utilities::Product";
-      };
-      "OBJ_66" = {
-         isa = "PBXTargetDependency";
-         target = "swift-utilities::swift-utilities";
-      };
-      "OBJ_69" = {
-         isa = "XCConfigurationList";
-         buildConfigurations = (
-            "OBJ_70",
-            "OBJ_71"
-         );
-         defaultConfigurationIsVisible = "0";
-         defaultConfigurationName = "Release";
-      };
-      "OBJ_7" = {
-         isa = "PBXGroup";
-         children = (
-            "OBJ_8"
-         );
-         name = "Sources";
-         path = "";
-         sourceTree = "SOURCE_ROOT";
-      };
-      "OBJ_70" = {
-         isa = "XCBuildConfiguration";
-         buildSettings = {
-            LD = "/usr/bin/true";
-            OTHER_SWIFT_FLAGS = (
-               "-swift-version",
-               "4",
-               "-I",
-               "$(TOOLCHAIN_DIR)/usr/lib/swift/pm/4",
-               "-target",
-               "x86_64-apple-macosx10.10",
-               "-sdk",
-               "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk",
-               "-package-description-version",
-               "4"
-            );
-            SWIFT_VERSION = "4.0";
-         };
-         name = "Debug";
-      };
-      "OBJ_71" = {
-         isa = "XCBuildConfiguration";
-         buildSettings = {
-            LD = "/usr/bin/true";
-            OTHER_SWIFT_FLAGS = (
-               "-swift-version",
-               "4",
-               "-I",
-               "$(TOOLCHAIN_DIR)/usr/lib/swift/pm/4",
-               "-target",
-               "x86_64-apple-macosx10.10",
-               "-sdk",
-               "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk",
-               "-package-description-version",
-               "4"
-            );
-            SWIFT_VERSION = "4.0";
-         };
-         name = "Release";
-      };
-      "OBJ_72" = {
-         isa = "PBXSourcesBuildPhase";
-         files = (
-            "OBJ_73"
-         );
-      };
-      "OBJ_73" = {
-         isa = "PBXBuildFile";
-         fileRef = "OBJ_6";
-      };
-      "OBJ_75" = {
-         isa = "XCConfigurationList";
-         buildConfigurations = (
-            "OBJ_76",
-            "OBJ_77"
-         );
-         defaultConfigurationIsVisible = "0";
-         defaultConfigurationName = "Release";
-      };
-      "OBJ_76" = {
-         isa = "XCBuildConfiguration";
-         buildSettings = {
-         };
-         name = "Debug";
-      };
-      "OBJ_77" = {
-         isa = "XCBuildConfiguration";
-         buildSettings = {
-         };
-         name = "Release";
-      };
-      "OBJ_78" = {
-         isa = "PBXTargetDependency";
-         target = "JiraSwift::JiraSwiftTests";
-      };
-      "OBJ_8" = {
-         isa = "PBXGroup";
-         children = (
-            "OBJ_9",
-            "OBJ_10",
-            "OBJ_12",
-            "OBJ_16",
-            "OBJ_23"
-         );
-         name = "JiraSwift";
-         path = "Sources/JiraSwift";
-         sourceTree = "SOURCE_ROOT";
-      };
-      "OBJ_80" = {
-         isa = "XCConfigurationList";
-         buildConfigurations = (
-            "OBJ_81",
-            "OBJ_82"
-         );
-         defaultConfigurationIsVisible = "0";
-         defaultConfigurationName = "Release";
-      };
-      "OBJ_81" = {
-         isa = "XCBuildConfiguration";
-         buildSettings = {
-            CLANG_ENABLE_MODULES = "YES";
-            EMBEDDED_CONTENT_CONTAINS_SWIFT = "YES";
-            FRAMEWORK_SEARCH_PATHS = (
-               "$(inherited)",
-               "$(PLATFORM_DIR)/Developer/Library/Frameworks"
-            );
-            HEADER_SEARCH_PATHS = (
-               "$(inherited)"
-            );
-            INFOPLIST_FILE = "JiraSwift.xcodeproj/JiraSwiftTests_Info.plist";
-            LD_RUNPATH_SEARCH_PATHS = (
-               "$(inherited)",
-               "@loader_path/../Frameworks",
-               "@loader_path/Frameworks"
-            );
-            OTHER_CFLAGS = (
-               "$(inherited)"
-            );
-            OTHER_LDFLAGS = (
-               "$(inherited)"
-            );
-            OTHER_SWIFT_FLAGS = (
-               "$(inherited)"
-            );
-            SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
-               "$(inherited)"
-            );
-            SWIFT_VERSION = "4.0";
-            TARGET_NAME = "JiraSwiftTests";
-         };
-         name = "Debug";
-      };
-      "OBJ_82" = {
-         isa = "XCBuildConfiguration";
-         buildSettings = {
-            CLANG_ENABLE_MODULES = "YES";
-            EMBEDDED_CONTENT_CONTAINS_SWIFT = "YES";
-            FRAMEWORK_SEARCH_PATHS = (
-               "$(inherited)",
-               "$(PLATFORM_DIR)/Developer/Library/Frameworks"
-            );
-            HEADER_SEARCH_PATHS = (
-               "$(inherited)"
-            );
-            INFOPLIST_FILE = "JiraSwift.xcodeproj/JiraSwiftTests_Info.plist";
-            LD_RUNPATH_SEARCH_PATHS = (
-               "$(inherited)",
-               "@loader_path/../Frameworks",
-               "@loader_path/Frameworks"
-            );
-            OTHER_CFLAGS = (
-               "$(inherited)"
-            );
-            OTHER_LDFLAGS = (
-               "$(inherited)"
-            );
-            OTHER_SWIFT_FLAGS = (
-               "$(inherited)"
-            );
-            SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
-               "$(inherited)"
-            );
-            SWIFT_VERSION = "4.0";
-            TARGET_NAME = "JiraSwiftTests";
-         };
-         name = "Release";
-      };
-      "OBJ_83" = {
-         isa = "PBXSourcesBuildPhase";
-         files = (
-            "OBJ_84"
-         );
-      };
-      "OBJ_84" = {
-         isa = "PBXBuildFile";
-         fileRef = "OBJ_29";
-      };
-      "OBJ_85" = {
-         isa = "PBXFrameworksBuildPhase";
-         files = (
-            "OBJ_86",
-            "OBJ_87"
-         );
-      };
-      "OBJ_86" = {
-         isa = "PBXBuildFile";
-         fileRef = "JiraSwift::JiraSwift::Product";
-      };
-      "OBJ_87" = {
-         isa = "PBXBuildFile";
-         fileRef = "swift-utilities::swift-utilities::Product";
-      };
-      "OBJ_88" = {
-         isa = "PBXTargetDependency";
-         target = "JiraSwift::JiraSwift";
-      };
-      "OBJ_89" = {
-         isa = "PBXTargetDependency";
-         target = "swift-utilities::swift-utilities";
-      };
-      "OBJ_9" = {
-         isa = "PBXFileReference";
-         path = "JiraSwift.h";
-         sourceTree = "<group>";
-      };
-      "OBJ_90" = {
-         isa = "XCConfigurationList";
-         buildConfigurations = (
-            "OBJ_91",
-            "OBJ_92"
-         );
-         defaultConfigurationIsVisible = "0";
-         defaultConfigurationName = "Release";
-      };
-      "OBJ_91" = {
-         isa = "XCBuildConfiguration";
-         buildSettings = {
-            ENABLE_TESTABILITY = "YES";
-            FRAMEWORK_SEARCH_PATHS = (
-               "$(inherited)",
-               "$(PLATFORM_DIR)/Developer/Library/Frameworks"
-            );
-            HEADER_SEARCH_PATHS = (
-               "$(inherited)"
-            );
-            INFOPLIST_FILE = "JiraSwift.xcodeproj/swift_utilities_Info.plist";
-            IPHONEOS_DEPLOYMENT_TARGET = "8.0";
-            LD_RUNPATH_SEARCH_PATHS = (
-               "$(inherited)",
-               "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx"
-            );
-            MACOSX_DEPLOYMENT_TARGET = "10.10";
-            OTHER_CFLAGS = (
-               "$(inherited)"
-            );
-            OTHER_LDFLAGS = (
-               "$(inherited)"
-            );
-            OTHER_SWIFT_FLAGS = (
-               "$(inherited)"
-            );
-            PRODUCT_BUNDLE_IDENTIFIER = "swift-utilities";
-            PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
-            PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-            SKIP_INSTALL = "YES";
-            SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
-               "$(inherited)"
-            );
-            SWIFT_VERSION = "5.0";
-            TARGET_NAME = "swift-utilities";
-            TVOS_DEPLOYMENT_TARGET = "9.0";
-            WATCHOS_DEPLOYMENT_TARGET = "2.0";
-         };
-         name = "Debug";
-      };
-      "OBJ_92" = {
-         isa = "XCBuildConfiguration";
-         buildSettings = {
-            ENABLE_TESTABILITY = "YES";
-            FRAMEWORK_SEARCH_PATHS = (
-               "$(inherited)",
-               "$(PLATFORM_DIR)/Developer/Library/Frameworks"
-            );
-            HEADER_SEARCH_PATHS = (
-               "$(inherited)"
-            );
-            INFOPLIST_FILE = "JiraSwift.xcodeproj/swift_utilities_Info.plist";
-            IPHONEOS_DEPLOYMENT_TARGET = "8.0";
-            LD_RUNPATH_SEARCH_PATHS = (
-               "$(inherited)",
-               "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx"
-            );
-            MACOSX_DEPLOYMENT_TARGET = "10.10";
-            OTHER_CFLAGS = (
-               "$(inherited)"
-            );
-            OTHER_LDFLAGS = (
-               "$(inherited)"
-            );
-            OTHER_SWIFT_FLAGS = (
-               "$(inherited)"
-            );
-            PRODUCT_BUNDLE_IDENTIFIER = "swift-utilities";
-            PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
-            PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-            SKIP_INSTALL = "YES";
-            SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
-               "$(inherited)"
-            );
-            SWIFT_VERSION = "5.0";
-            TARGET_NAME = "swift-utilities";
-            TVOS_DEPLOYMENT_TARGET = "9.0";
-            WATCHOS_DEPLOYMENT_TARGET = "2.0";
-         };
-         name = "Release";
-      };
-      "OBJ_93" = {
-         isa = "PBXSourcesBuildPhase";
-         files = (
-            "OBJ_94",
-            "OBJ_95",
-            "OBJ_96",
-            "OBJ_97",
-            "OBJ_98",
-            "OBJ_99"
-         );
-      };
-      "OBJ_94" = {
-         isa = "PBXBuildFile";
-         fileRef = "OBJ_33";
-      };
-      "OBJ_95" = {
-         isa = "PBXBuildFile";
-         fileRef = "OBJ_34";
-      };
-      "OBJ_96" = {
-         isa = "PBXBuildFile";
-         fileRef = "OBJ_35";
-      };
-      "OBJ_97" = {
-         isa = "PBXBuildFile";
-         fileRef = "OBJ_36";
-      };
-      "OBJ_98" = {
-         isa = "PBXBuildFile";
-         fileRef = "OBJ_37";
-      };
-      "OBJ_99" = {
-         isa = "PBXBuildFile";
-         fileRef = "OBJ_38";
-      };
-      "swift-utilities::SwiftPMPackageDescription" = {
-         isa = "PBXNativeTarget";
-         buildConfigurationList = "OBJ_102";
-         buildPhases = (
-            "OBJ_105"
-         );
-         dependencies = (
-         );
-         name = "swift-utilitiesPackageDescription";
-         productName = "swift-utilitiesPackageDescription";
-         productType = "com.apple.product-type.framework";
-      };
-      "swift-utilities::swift-utilities" = {
-         isa = "PBXNativeTarget";
-         buildConfigurationList = "OBJ_90";
-         buildPhases = (
-            "OBJ_93",
-            "OBJ_100"
-         );
-         dependencies = (
-         );
-         name = "swift-utilities";
-         productName = "swift_utilities";
-         productReference = "swift-utilities::swift-utilities::Product";
-         productType = "com.apple.product-type.framework";
-      };
-      "swift-utilities::swift-utilities::Product" = {
-         isa = "PBXFileReference";
-         path = "swift_utilities.framework";
-         sourceTree = "BUILT_PRODUCTS_DIR";
-      };
-   };
-   rootObject = "OBJ_1";
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 52;
+	objects = {
+
+/* Begin PBXAggregateTarget section */
+		"JiraSwift::JiraSwiftPackageTests::ProductTarget" /* JiraSwiftPackageTests */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = OBJ_75 /* Build configuration list for PBXAggregateTarget "JiraSwiftPackageTests" */;
+			buildPhases = (
+			);
+			dependencies = (
+				OBJ_78 /* PBXTargetDependency */,
+			);
+			name = JiraSwiftPackageTests;
+			productName = JiraSwiftPackageTests;
+		};
+/* End PBXAggregateTarget section */
+
+/* Begin PBXBuildFile section */
+		A920A8732381BC3000109FEA /* swift-utilities in Frameworks */ = {isa = PBXBuildFile; productRef = A920A8722381BC3000109FEA /* swift-utilities */; };
+		OBJ_106 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_39 /* Package.swift */; };
+		OBJ_51 /* JiraRestClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_11 /* JiraRestClient.swift */; };
+		OBJ_52 /* BoardResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_13 /* BoardResponse.swift */; };
+		OBJ_53 /* IssueResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_14 /* IssueResponse.swift */; };
+		OBJ_54 /* SprintResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_15 /* SprintResponse.swift */; };
+		OBJ_55 /* Assignee.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_17 /* Assignee.swift */; };
+		OBJ_56 /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_18 /* Board.swift */; };
+		OBJ_57 /* Issue.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_19 /* Issue.swift */; };
+		OBJ_58 /* IssueFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_20 /* IssueFilter.swift */; };
+		OBJ_59 /* JQLFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_21 /* JQLFilter.swift */; };
+		OBJ_60 /* Sprint.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_22 /* Sprint.swift */; };
+		OBJ_61 /* Dictionary+URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_24 /* Dictionary+URL.swift */; };
+		OBJ_62 /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_25 /* JSON.swift */; };
+		OBJ_63 /* String+Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_26 /* String+Tools.swift */; };
+		OBJ_65 /* swift_utilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "swift-utilities::swift-utilities::Product" /* swift_utilities.framework */; };
+		OBJ_73 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_6 /* Package.swift */; };
+		OBJ_84 /* JiraSwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_29 /* JiraSwiftTests.swift */; };
+		OBJ_86 /* JiraSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "JiraSwift::JiraSwift::Product" /* JiraSwift.framework */; };
+		OBJ_87 /* swift_utilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "swift-utilities::swift-utilities::Product" /* swift_utilities.framework */; };
+		OBJ_94 /* Dictionary+URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_33 /* Dictionary+URL.swift */; };
+		OBJ_95 /* FileUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_34 /* FileUtils.swift */; };
+		OBJ_96 /* NSRegularExpressions+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_35 /* NSRegularExpressions+Utils.swift */; };
+		OBJ_97 /* RestClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_36 /* RestClient.swift */; };
+		OBJ_98 /* SimpleHttp.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_37 /* SimpleHttp.swift */; };
+		OBJ_99 /* String+Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_38 /* String+Tools.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		A920A86E2381BAB500109FEA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = OBJ_1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = "swift-utilities::swift-utilities";
+			remoteInfo = "swift-utilities";
+		};
+		A920A86F2381BAB500109FEA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = OBJ_1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = "JiraSwift::JiraSwift";
+			remoteInfo = JiraSwift;
+		};
+		A920A8702381BAB500109FEA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = OBJ_1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = "swift-utilities::swift-utilities";
+			remoteInfo = "swift-utilities";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		"JiraSwift::JiraSwift::Product" /* JiraSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = JiraSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		"JiraSwift::JiraSwiftTests::Product" /* JiraSwiftTests.xctest */ = {isa = PBXFileReference; lastKnownFileType = file; path = JiraSwiftTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		OBJ_11 /* JiraRestClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JiraRestClient.swift; sourceTree = "<group>"; };
+		OBJ_13 /* BoardResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardResponse.swift; sourceTree = "<group>"; };
+		OBJ_14 /* IssueResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueResponse.swift; sourceTree = "<group>"; };
+		OBJ_15 /* SprintResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SprintResponse.swift; sourceTree = "<group>"; };
+		OBJ_17 /* Assignee.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assignee.swift; sourceTree = "<group>"; };
+		OBJ_18 /* Board.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
+		OBJ_19 /* Issue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Issue.swift; sourceTree = "<group>"; };
+		OBJ_20 /* IssueFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueFilter.swift; sourceTree = "<group>"; };
+		OBJ_21 /* JQLFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JQLFilter.swift; sourceTree = "<group>"; };
+		OBJ_22 /* Sprint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sprint.swift; sourceTree = "<group>"; };
+		OBJ_24 /* Dictionary+URL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dictionary+URL.swift"; sourceTree = "<group>"; };
+		OBJ_25 /* JSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSON.swift; sourceTree = "<group>"; };
+		OBJ_26 /* String+Tools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Tools.swift"; sourceTree = "<group>"; };
+		OBJ_29 /* JiraSwiftTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JiraSwiftTests.swift; sourceTree = "<group>"; };
+		OBJ_33 /* Dictionary+URL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dictionary+URL.swift"; sourceTree = "<group>"; };
+		OBJ_34 /* FileUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileUtils.swift; sourceTree = "<group>"; };
+		OBJ_35 /* NSRegularExpressions+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSRegularExpressions+Utils.swift"; sourceTree = "<group>"; };
+		OBJ_36 /* RestClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestClient.swift; sourceTree = "<group>"; };
+		OBJ_37 /* SimpleHttp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleHttp.swift; sourceTree = "<group>"; };
+		OBJ_38 /* String+Tools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Tools.swift"; sourceTree = "<group>"; };
+		OBJ_39 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = Package.swift; path = "/Users/bill/dev/jira/JiraSwift/.build/checkouts/swift-utilities/Package.swift"; sourceTree = "<group>"; };
+		OBJ_44 /* JiraSwift-iOS */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "JiraSwift-iOS"; sourceTree = SOURCE_ROOT; };
+		OBJ_45 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		OBJ_6 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
+		OBJ_9 /* JiraSwift.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JiraSwift.h; sourceTree = "<group>"; };
+		"swift-utilities::swift-utilities::Product" /* swift_utilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = swift_utilities.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		OBJ_100 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		OBJ_64 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 0;
+			files = (
+				OBJ_65 /* swift_utilities.framework in Frameworks */,
+				A920A8732381BC3000109FEA /* swift-utilities in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		OBJ_85 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 0;
+			files = (
+				OBJ_86 /* JiraSwift.framework in Frameworks */,
+				OBJ_87 /* swift_utilities.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		OBJ_10 /* HTTP */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_11 /* JiraRestClient.swift */,
+			);
+			path = HTTP;
+			sourceTree = "<group>";
+		};
+		OBJ_12 /* JSON Parsing */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_13 /* BoardResponse.swift */,
+				OBJ_14 /* IssueResponse.swift */,
+				OBJ_15 /* SprintResponse.swift */,
+			);
+			path = "JSON Parsing";
+			sourceTree = "<group>";
+		};
+		OBJ_16 /* Jira Models */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_17 /* Assignee.swift */,
+				OBJ_18 /* Board.swift */,
+				OBJ_19 /* Issue.swift */,
+				OBJ_20 /* IssueFilter.swift */,
+				OBJ_21 /* JQLFilter.swift */,
+				OBJ_22 /* Sprint.swift */,
+			);
+			path = "Jira Models";
+			sourceTree = "<group>";
+		};
+		OBJ_23 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_24 /* Dictionary+URL.swift */,
+				OBJ_25 /* JSON.swift */,
+				OBJ_26 /* String+Tools.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		OBJ_27 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_28 /* JiraSwiftTests */,
+			);
+			name = Tests;
+			sourceTree = SOURCE_ROOT;
+		};
+		OBJ_28 /* JiraSwiftTests */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_29 /* JiraSwiftTests.swift */,
+			);
+			name = JiraSwiftTests;
+			path = Tests/JiraSwiftTests;
+			sourceTree = SOURCE_ROOT;
+		};
+		OBJ_30 /* Dependencies */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_31 /* swift-utilities */,
+			);
+			name = Dependencies;
+			sourceTree = "<group>";
+		};
+		OBJ_31 /* swift-utilities */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_32 /* swift-utilities */,
+				OBJ_39 /* Package.swift */,
+			);
+			name = "swift-utilities";
+			sourceTree = SOURCE_ROOT;
+		};
+		OBJ_32 /* swift-utilities */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_33 /* Dictionary+URL.swift */,
+				OBJ_34 /* FileUtils.swift */,
+				OBJ_35 /* NSRegularExpressions+Utils.swift */,
+				OBJ_36 /* RestClient.swift */,
+				OBJ_37 /* SimpleHttp.swift */,
+				OBJ_38 /* String+Tools.swift */,
+			);
+			name = "swift-utilities";
+			path = ".build/checkouts/swift-utilities/Sources/swift-utilities";
+			sourceTree = SOURCE_ROOT;
+		};
+		OBJ_40 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				"swift-utilities::swift-utilities::Product" /* swift_utilities.framework */,
+				"JiraSwift::JiraSwiftTests::Product" /* JiraSwiftTests.xctest */,
+				"JiraSwift::JiraSwift::Product" /* JiraSwift.framework */,
+			);
+			name = Products;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		OBJ_5 /*  */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_6 /* Package.swift */,
+				OBJ_7 /* Sources */,
+				OBJ_27 /* Tests */,
+				OBJ_30 /* Dependencies */,
+				OBJ_40 /* Products */,
+				OBJ_44 /* JiraSwift-iOS */,
+				OBJ_45 /* README.md */,
+			);
+			name = "";
+			sourceTree = "<group>";
+		};
+		OBJ_7 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_8 /* JiraSwift */,
+			);
+			name = Sources;
+			sourceTree = SOURCE_ROOT;
+		};
+		OBJ_8 /* JiraSwift */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_9 /* JiraSwift.h */,
+				OBJ_10 /* HTTP */,
+				OBJ_12 /* JSON Parsing */,
+				OBJ_16 /* Jira Models */,
+				OBJ_23 /* Utilities */,
+			);
+			name = JiraSwift;
+			path = Sources/JiraSwift;
+			sourceTree = SOURCE_ROOT;
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		"JiraSwift::JiraSwift" /* JiraSwift */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = OBJ_47 /* Build configuration list for PBXNativeTarget "JiraSwift" */;
+			buildPhases = (
+				OBJ_50 /* Sources */,
+				OBJ_64 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				OBJ_66 /* PBXTargetDependency */,
+			);
+			name = JiraSwift;
+			packageProductDependencies = (
+				A920A8722381BC3000109FEA /* swift-utilities */,
+			);
+			productName = JiraSwift;
+			productReference = "JiraSwift::JiraSwift::Product" /* JiraSwift.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		"JiraSwift::JiraSwiftTests" /* JiraSwiftTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = OBJ_80 /* Build configuration list for PBXNativeTarget "JiraSwiftTests" */;
+			buildPhases = (
+				OBJ_83 /* Sources */,
+				OBJ_85 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				OBJ_88 /* PBXTargetDependency */,
+				OBJ_89 /* PBXTargetDependency */,
+			);
+			name = JiraSwiftTests;
+			productName = JiraSwiftTests;
+			productReference = "JiraSwift::JiraSwiftTests::Product" /* JiraSwiftTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		"JiraSwift::SwiftPMPackageDescription" /* JiraSwiftPackageDescription */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = OBJ_69 /* Build configuration list for PBXNativeTarget "JiraSwiftPackageDescription" */;
+			buildPhases = (
+				OBJ_72 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = JiraSwiftPackageDescription;
+			productName = JiraSwiftPackageDescription;
+			productType = "com.apple.product-type.framework";
+		};
+		"swift-utilities::SwiftPMPackageDescription" /* swift-utilitiesPackageDescription */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = OBJ_102 /* Build configuration list for PBXNativeTarget "swift-utilitiesPackageDescription" */;
+			buildPhases = (
+				OBJ_105 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "swift-utilitiesPackageDescription";
+			productName = "swift-utilitiesPackageDescription";
+			productType = "com.apple.product-type.framework";
+		};
+		"swift-utilities::swift-utilities" /* swift-utilities */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = OBJ_90 /* Build configuration list for PBXNativeTarget "swift-utilities" */;
+			buildPhases = (
+				OBJ_93 /* Sources */,
+				OBJ_100 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "swift-utilities";
+			productName = swift_utilities;
+			productReference = "swift-utilities::swift-utilities::Product" /* swift_utilities.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		OBJ_1 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftMigration = 9999;
+				LastUpgradeCheck = 9999;
+			};
+			buildConfigurationList = OBJ_2 /* Build configuration list for PBXProject "JiraSwift" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = OBJ_5 /*  */;
+			packageReferences = (
+				A920A8712381BC3000109FEA /* XCRemoteSwiftPackageReference "swift-utilities" */,
+			);
+			productRefGroup = OBJ_40 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				"JiraSwift::JiraSwift" /* JiraSwift */,
+				"JiraSwift::SwiftPMPackageDescription" /* JiraSwiftPackageDescription */,
+				"JiraSwift::JiraSwiftPackageTests::ProductTarget" /* JiraSwiftPackageTests */,
+				"JiraSwift::JiraSwiftTests" /* JiraSwiftTests */,
+				"swift-utilities::swift-utilities" /* swift-utilities */,
+				"swift-utilities::SwiftPMPackageDescription" /* swift-utilitiesPackageDescription */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		OBJ_105 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 0;
+			files = (
+				OBJ_106 /* Package.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		OBJ_50 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 0;
+			files = (
+				OBJ_51 /* JiraRestClient.swift in Sources */,
+				OBJ_52 /* BoardResponse.swift in Sources */,
+				OBJ_53 /* IssueResponse.swift in Sources */,
+				OBJ_54 /* SprintResponse.swift in Sources */,
+				OBJ_55 /* Assignee.swift in Sources */,
+				OBJ_56 /* Board.swift in Sources */,
+				OBJ_57 /* Issue.swift in Sources */,
+				OBJ_58 /* IssueFilter.swift in Sources */,
+				OBJ_59 /* JQLFilter.swift in Sources */,
+				OBJ_60 /* Sprint.swift in Sources */,
+				OBJ_61 /* Dictionary+URL.swift in Sources */,
+				OBJ_62 /* JSON.swift in Sources */,
+				OBJ_63 /* String+Tools.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		OBJ_72 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 0;
+			files = (
+				OBJ_73 /* Package.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		OBJ_83 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 0;
+			files = (
+				OBJ_84 /* JiraSwiftTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		OBJ_93 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 0;
+			files = (
+				OBJ_94 /* Dictionary+URL.swift in Sources */,
+				OBJ_95 /* FileUtils.swift in Sources */,
+				OBJ_96 /* NSRegularExpressions+Utils.swift in Sources */,
+				OBJ_97 /* RestClient.swift in Sources */,
+				OBJ_98 /* SimpleHttp.swift in Sources */,
+				OBJ_99 /* String+Tools.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		OBJ_66 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = "swift-utilities::swift-utilities" /* swift-utilities */;
+			targetProxy = A920A86E2381BAB500109FEA /* PBXContainerItemProxy */;
+		};
+		OBJ_78 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = "JiraSwift::JiraSwiftTests" /* JiraSwiftTests */;
+			targetProxy = "JiraSwift::JiraSwiftTests" /* JiraSwiftTests */;
+		};
+		OBJ_88 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = "JiraSwift::JiraSwift" /* JiraSwift */;
+			targetProxy = A920A86F2381BAB500109FEA /* PBXContainerItemProxy */;
+		};
+		OBJ_89 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = "swift-utilities::swift-utilities" /* swift-utilities */;
+			targetProxy = A920A8702381BAB500109FEA /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		OBJ_103 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				LD = /usr/bin/true;
+				OTHER_SWIFT_FLAGS = "-swift-version 5 -I $(TOOLCHAIN_DIR)/usr/lib/swift/pm/4_2 -target x86_64-apple-macosx10.10 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk -package-description-version 5.1";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		OBJ_104 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				LD = /usr/bin/true;
+				OTHER_SWIFT_FLAGS = "-swift-version 5 -I $(TOOLCHAIN_DIR)/usr/lib/swift/pm/4_2 -target x86_64-apple-macosx10.10 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk -package-description-version 5.1";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		OBJ_3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_NS_ASSERTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"SWIFT_PACKAGE=1",
+					"DEBUG=1",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_SWIFT_FLAGS = "$(inherited) -DXcode";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SUPPORTED_PLATFORMS = "macosx iphoneos iphonesimulator appletvos appletvsimulator watchos watchsimulator";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) SWIFT_PACKAGE DEBUG";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				USE_HEADERMAP = NO;
+			};
+			name = Debug;
+		};
+		OBJ_4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_OPTIMIZATION_LEVEL = s;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"SWIFT_PACKAGE=1",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				OTHER_SWIFT_FLAGS = "$(inherited) -DXcode";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SUPPORTED_PLATFORMS = "macosx iphoneos iphonesimulator appletvos appletvsimulator watchos watchsimulator";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) SWIFT_PACKAGE";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				USE_HEADERMAP = NO;
+			};
+			name = Release;
+		};
+		OBJ_48 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+				);
+				HEADER_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = JiraSwift.xcodeproj/JiraSwift_Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(TOOLCHAIN_DIR)/usr/lib/swift/macosx",
+				);
+				OTHER_CFLAGS = "$(inherited)";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = JiraSwift;
+				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
+				SWIFT_VERSION = 4.0;
+				TARGET_NAME = JiraSwift;
+			};
+			name = Debug;
+		};
+		OBJ_49 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+				);
+				HEADER_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = JiraSwift.xcodeproj/JiraSwift_Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(TOOLCHAIN_DIR)/usr/lib/swift/macosx",
+				);
+				OTHER_CFLAGS = "$(inherited)";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = JiraSwift;
+				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
+				SWIFT_VERSION = 4.0;
+				TARGET_NAME = JiraSwift;
+			};
+			name = Release;
+		};
+		OBJ_70 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				LD = /usr/bin/true;
+				OTHER_SWIFT_FLAGS = "-swift-version 4 -I $(TOOLCHAIN_DIR)/usr/lib/swift/pm/4 -target x86_64-apple-macosx10.10 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk -package-description-version 4";
+				SWIFT_VERSION = 4.0;
+			};
+			name = Debug;
+		};
+		OBJ_71 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				LD = /usr/bin/true;
+				OTHER_SWIFT_FLAGS = "-swift-version 4 -I $(TOOLCHAIN_DIR)/usr/lib/swift/pm/4 -target x86_64-apple-macosx10.10 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk -package-description-version 4";
+				SWIFT_VERSION = 4.0;
+			};
+			name = Release;
+		};
+		OBJ_76 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Debug;
+		};
+		OBJ_77 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Release;
+		};
+		OBJ_81 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+				);
+				HEADER_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = JiraSwift.xcodeproj/JiraSwiftTests_Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@loader_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
+				OTHER_CFLAGS = "$(inherited)";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
+				SWIFT_VERSION = 4.0;
+				TARGET_NAME = JiraSwiftTests;
+			};
+			name = Debug;
+		};
+		OBJ_82 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+				);
+				HEADER_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = JiraSwift.xcodeproj/JiraSwiftTests_Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@loader_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
+				OTHER_CFLAGS = "$(inherited)";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
+				SWIFT_VERSION = 4.0;
+				TARGET_NAME = JiraSwiftTests;
+			};
+			name = Release;
+		};
+		OBJ_91 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+				);
+				HEADER_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = JiraSwift.xcodeproj/swift_utilities_Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(TOOLCHAIN_DIR)/usr/lib/swift/macosx",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				OTHER_CFLAGS = "$(inherited)";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = "swift-utilities";
+				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
+				SWIFT_VERSION = 5.0;
+				TARGET_NAME = "swift-utilities";
+				TVOS_DEPLOYMENT_TARGET = 9.0;
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
+			};
+			name = Debug;
+		};
+		OBJ_92 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+				);
+				HEADER_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = JiraSwift.xcodeproj/swift_utilities_Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(TOOLCHAIN_DIR)/usr/lib/swift/macosx",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				OTHER_CFLAGS = "$(inherited)";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = "swift-utilities";
+				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
+				SWIFT_VERSION = 5.0;
+				TARGET_NAME = "swift-utilities";
+				TVOS_DEPLOYMENT_TARGET = 9.0;
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		OBJ_102 /* Build configuration list for PBXNativeTarget "swift-utilitiesPackageDescription" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				OBJ_103 /* Debug */,
+				OBJ_104 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		OBJ_2 /* Build configuration list for PBXProject "JiraSwift" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				OBJ_3 /* Debug */,
+				OBJ_4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		OBJ_47 /* Build configuration list for PBXNativeTarget "JiraSwift" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				OBJ_48 /* Debug */,
+				OBJ_49 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		OBJ_69 /* Build configuration list for PBXNativeTarget "JiraSwiftPackageDescription" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				OBJ_70 /* Debug */,
+				OBJ_71 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		OBJ_75 /* Build configuration list for PBXAggregateTarget "JiraSwiftPackageTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				OBJ_76 /* Debug */,
+				OBJ_77 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		OBJ_80 /* Build configuration list for PBXNativeTarget "JiraSwiftTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				OBJ_81 /* Debug */,
+				OBJ_82 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		OBJ_90 /* Build configuration list for PBXNativeTarget "swift-utilities" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				OBJ_91 /* Debug */,
+				OBJ_92 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		A920A8712381BC3000109FEA /* XCRemoteSwiftPackageReference "swift-utilities" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/gestrich/swift-utilities.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		A920A8722381BC3000109FEA /* swift-utilities */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A920A8712381BC3000109FEA /* XCRemoteSwiftPackageReference "swift-utilities" */;
+			productName = "swift-utilities";
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = OBJ_1 /* Project object */;
 }

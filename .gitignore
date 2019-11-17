@@ -5,3 +5,4 @@ JiraSwift.xcodeproj/xcuserdata/*.xcuserdatad/xcschemes/xcschememanagement.plist
 JiraSwift.xcodeproj/xcshareddata/*
 .DS_Store
 .build/*
+Package.resolved
