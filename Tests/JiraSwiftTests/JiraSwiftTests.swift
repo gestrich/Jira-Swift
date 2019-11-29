@@ -1,4 +1,6 @@
 import XCTest
+import swift_utilities
+
 @testable import JiraSwift
 
 //There are no real unit tests in here - This is just a playground for trying the API.

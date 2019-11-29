@@ -33,9 +33,6 @@
 		OBJ_58 /* IssueFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_20 /* IssueFilter.swift */; };
 		OBJ_59 /* JQLFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_21 /* JQLFilter.swift */; };
 		OBJ_60 /* Sprint.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_22 /* Sprint.swift */; };
-		OBJ_61 /* Dictionary+URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_24 /* Dictionary+URL.swift */; };
-		OBJ_62 /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_25 /* JSON.swift */; };
-		OBJ_63 /* String+Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_26 /* String+Tools.swift */; };
 		OBJ_65 /* swift_utilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "swift-utilities::swift-utilities::Product" /* swift_utilities.framework */; };
 		OBJ_73 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_6 /* Package.swift */; };
 		OBJ_84 /* JiraSwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_29 /* JiraSwiftTests.swift */; };
@@ -71,6 +68,13 @@
 			remoteGlobalIDString = "swift-utilities::swift-utilities";
 			remoteInfo = "swift-utilities";
 		};
+		A9E267C22381E2990054DCA8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = OBJ_1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = "JiraSwift::JiraSwiftTests";
+			remoteInfo = JiraSwiftTests;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -86,9 +90,6 @@
 		OBJ_20 /* IssueFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueFilter.swift; sourceTree = "<group>"; };
 		OBJ_21 /* JQLFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JQLFilter.swift; sourceTree = "<group>"; };
 		OBJ_22 /* Sprint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sprint.swift; sourceTree = "<group>"; };
-		OBJ_24 /* Dictionary+URL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dictionary+URL.swift"; sourceTree = "<group>"; };
-		OBJ_25 /* JSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSON.swift; sourceTree = "<group>"; };
-		OBJ_26 /* String+Tools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Tools.swift"; sourceTree = "<group>"; };
 		OBJ_29 /* JiraSwiftTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JiraSwiftTests.swift; sourceTree = "<group>"; };
 		OBJ_33 /* Dictionary+URL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dictionary+URL.swift"; sourceTree = "<group>"; };
 		OBJ_34 /* FileUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileUtils.swift; sourceTree = "<group>"; };
@@ -164,16 +165,6 @@
 			path = "Jira Models";
 			sourceTree = "<group>";
 		};
-		OBJ_23 /* Utilities */ = {
-			isa = PBXGroup;
-			children = (
-				OBJ_24 /* Dictionary+URL.swift */,
-				OBJ_25 /* JSON.swift */,
-				OBJ_26 /* String+Tools.swift */,
-			);
-			path = Utilities;
-			sourceTree = "<group>";
-		};
 		OBJ_27 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
@@ -232,7 +223,7 @@
 			name = Products;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		OBJ_5 /*  */ = {
+		OBJ_5 = {
 			isa = PBXGroup;
 			children = (
 				OBJ_6 /* Package.swift */,
@@ -243,7 +234,6 @@
 				OBJ_44 /* JiraSwift-iOS */,
 				OBJ_45 /* README.md */,
 			);
-			name = "";
 			sourceTree = "<group>";
 		};
 		OBJ_7 /* Sources */ = {
@@ -261,7 +251,6 @@
 				OBJ_10 /* HTTP */,
 				OBJ_12 /* JSON Parsing */,
 				OBJ_16 /* Jira Models */,
-				OBJ_23 /* Utilities */,
 			);
 			name = JiraSwift;
 			path = Sources/JiraSwift;
@@ -368,7 +357,7 @@
 			knownRegions = (
 				en,
 			);
-			mainGroup = OBJ_5 /*  */;
+			mainGroup = OBJ_5;
 			packageReferences = (
 				A920A8712381BC3000109FEA /* XCRemoteSwiftPackageReference "swift-utilities" */,
 			);
@@ -409,9 +398,6 @@
 				OBJ_58 /* IssueFilter.swift in Sources */,
 				OBJ_59 /* JQLFilter.swift in Sources */,
 				OBJ_60 /* Sprint.swift in Sources */,
-				OBJ_61 /* Dictionary+URL.swift in Sources */,
-				OBJ_62 /* JSON.swift in Sources */,
-				OBJ_63 /* String+Tools.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -455,7 +441,7 @@
 		OBJ_78 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "JiraSwift::JiraSwiftTests" /* JiraSwiftTests */;
-			targetProxy = "JiraSwift::JiraSwiftTests" /* JiraSwiftTests */;
+			targetProxy = A9E267C22381E2990054DCA8 /* PBXContainerItemProxy */;
 		};
 		OBJ_88 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
