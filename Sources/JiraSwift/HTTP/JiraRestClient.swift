@@ -20,7 +20,7 @@ public class JiraRestClient: RestClient {
     
     public func getBoards(startAt: Int, completionBlock:(@escaping ([Board]) -> Void), errorBlock:(@escaping (RestClientError) -> Void)) {
         
-        jsonData(relativeURL: "agile/latest/board?startAt=\(startAt)", completionBlock: { (json) in
+        getData(relativeURL: "agile/latest/board?startAt=\(startAt)", completionBlock: { (json) in
             
             let decoder = JSONDecoder()
             
@@ -62,7 +62,7 @@ public class JiraRestClient: RestClient {
     
     public func getSprints(for board:Board, startAt: Int, completionBlock:(@escaping ([Sprint]) -> Void), errorBlock:(@escaping (RestClientError) -> Void))  {
         
-        jsonData(relativeURL: "agile/latest/board/\(board.id)/sprint?startAt=\(startAt)", completionBlock: { (json) in
+        getData(relativeURL: "agile/latest/board/\(board.id)/sprint?startAt=\(startAt)", completionBlock: { (json) in
             
             let decoder = JSONDecoder()
             
@@ -86,7 +86,7 @@ public class JiraRestClient: RestClient {
     
     public func issue(identifier: String, completionBlock:(@escaping (Issue) -> Void), errorBlock:(@escaping (RestClientError) -> Void))  {
         
-        jsonData(relativeURL: "api/2/issue/\(identifier)", completionBlock: { (json) in
+        getData(relativeURL: "api/2/issue/\(identifier)", completionBlock: { (json) in
             let decoder = JSONDecoder()
             
             do {
@@ -106,7 +106,7 @@ public class JiraRestClient: RestClient {
     }
     
     func issues(for relativeURL: String, startAt: Int, completionBlock:(@escaping ([Issue]) -> Void), errorBlock:(@escaping (RestClientError) -> Void)){
-        jsonData(relativeURL: relativeURL + "&startAt=\(startAt)", completionBlock: { (json) in
+        getData(relativeURL: relativeURL + "&startAt=\(startAt)", completionBlock: { (json) in
             
             let decoder = JSONDecoder()
             
