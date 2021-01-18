@@ -29,6 +29,24 @@ class JiraSwiftTests: XCTestCase {
 
     }
     
+    func testGetIssue() {
+        //issue
+        
+        let expectation = XCTestExpectation(description: "testGetIssue test")
+        let jiraClient = getJiraClient()
+        jiraClient?.issue(identifier: "FFM-12345", completionBlock: { (issue) in
+            print(issue)
+            expectation.fulfill()
+        }, errorBlock: { (error) in
+            print(error)
+            expectation.fulfill()
+        })
+
+        
+        wait(for: [expectation], timeout: 100.0)
+        
+    }
+    
     func testIssueQuery() {
         
         let jiraClient = getJiraClient()!

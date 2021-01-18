@@ -9,10 +9,10 @@
 import Foundation
 
 public struct Assignee : Codable {
-    public let key : String
-    public let name : String
+    public let key : Int?
+    public let name : String?
     public let displayName : String
-    public let emailAddress : String
+    public let emailAddress : String?
     public let avatarUrls : AvatarURLs
     enum CodingKeys : String, CodingKey {
         case key
