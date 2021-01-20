@@ -22,7 +22,7 @@ public class JiraRestClient: RestClient {
         
         getData(relativeURL: "agile/latest/board?startAt=\(startAt)", completionBlock: { (json) in
             
-            let decoder = JSONDecoder()
+            let decoder = self.jsonDecoder()
             
             do {
                 let boardResponse = try decoder.decode(BoardResponse.self, from: json)
@@ -64,7 +64,7 @@ public class JiraRestClient: RestClient {
         
         getData(relativeURL: "agile/latest/board/\(board.id)/sprint?startAt=\(startAt)", completionBlock: { (json) in
             
-            let decoder = JSONDecoder()
+            let decoder = self.jsonDecoder()
             
             do {
                 let sprintResponse = try decoder.decode(SprintResponse.self, from: json)
@@ -87,7 +87,7 @@ public class JiraRestClient: RestClient {
     public func issue(identifier: String, completionBlock:(@escaping (Issue) -> Void), errorBlock:(@escaping (RestClientError) -> Void))  {
         
         getData(relativeURL: "api/2/issue/\(identifier)", completionBlock: { (json) in
-            let decoder = JSONDecoder()
+            let decoder = self.jsonDecoder()
             
             do {
                 let issue = try decoder.decode(Issue.self, from: json)
@@ -108,7 +108,7 @@ public class JiraRestClient: RestClient {
     func issues(for relativeURL: String, startAt: Int, completionBlock:(@escaping ([Issue]) -> Void), errorBlock:(@escaping (RestClientError) -> Void)){
         getData(relativeURL: relativeURL + "&startAt=\(startAt)", completionBlock: { (json) in
             
-            let decoder = JSONDecoder()
+            let decoder = self.jsonDecoder()
             
             do {
                 let issueResponse = try decoder.decode(IssueResponse.self, from: json)
@@ -145,6 +145,14 @@ public class JiraRestClient: RestClient {
             completionBlock()
         }, errorBlock:errorBlock)
         
+    }
+    
+    public func jsonDecoder() -> JSONDecoder {
+        let decoder = JSONDecoder()
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZZZZ'"
+        decoder.dateDecodingStrategy = .formatted(formatter)
+        return decoder
     }
     
     
