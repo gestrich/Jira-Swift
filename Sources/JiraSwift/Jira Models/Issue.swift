@@ -45,8 +45,8 @@ public struct Issue : Codable {
     }
     
     public struct FixVersion : Codable {
-        let description : String?
-        let name : String
+        public let description : String?
+        public let name : String
         enum CodingKeys : String, CodingKey {
             case description
             case name
@@ -54,8 +54,8 @@ public struct Issue : Codable {
     }
     
     public struct IssueStatus : Codable {
-        let description : String?
-        let name : String
+        public let description : String?
+        public let name : String
     }
     
 }
