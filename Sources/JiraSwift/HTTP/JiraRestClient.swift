@@ -9,7 +9,7 @@
 // Jira Rest API Reference: https://developer.atlassian.com/jiradev/jira-apis/jira-rest-apis/jira-rest-api-tutorials
 
 import Foundation
-import swift_utilities
+import SwiftRestTools
 
 public class JiraRestClient: RestClient {
     

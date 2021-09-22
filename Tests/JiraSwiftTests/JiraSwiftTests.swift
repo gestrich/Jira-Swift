@@ -1,5 +1,5 @@
 import XCTest
-import swift_utilities
+import SwiftRestTools
 
 @testable import JiraSwift
 

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import swift_utilities
 
 public struct IssueFilter {
     public var assignee: String?

@@ -13,14 +13,15 @@ let package = Package(
     ],
     dependencies: [
         // Dependencies declare other packages that this package depends on.
-        .package(url: "https://github.com/gestrich/swift-utilities.git", .branch("master")),
+        .package(url: "https://github.com/gestrich/swift-utilities.git", .revision("3f5327a49a4d811646c3913aedf950ce79e03270")),
+        .package(url: "https://github.com/gestrich/SwiftRestTools.git", .revision("0c868ad7e5df4ee45471921e0845c083f73a4647")),
     ],
     targets: [
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.
         // Targets can depend on other targets in this package, and on products in packages which this package depends on.
         .target(
             name: "JiraSwift",
-            dependencies: ["swift-utilities"]),
+            dependencies: ["swift-utilities", "SwiftRestTools"]),
         .testTarget(
             name: "JiraSwiftTests",
             dependencies: ["JiraSwift"]),
