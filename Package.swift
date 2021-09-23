@@ -13,8 +13,8 @@ let package = Package(
     ],
     dependencies: [
         // Dependencies declare other packages that this package depends on.
-        .package(url: "https://github.com/gestrich/swift-utilities.git", .revision("3f5327a49a4d811646c3913aedf950ce79e03270")),
-        .package(url: "https://github.com/gestrich/SwiftRestTools.git", .revision("0c868ad7e5df4ee45471921e0845c083f73a4647")),
+        .package(url: "https://github.com/gestrich/swift-utilities.git", .branch("master")),
+        .package(url: "https://github.com/gestrich/SwiftRestTools.git", .branch("main")),
     ],
     targets: [
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.
