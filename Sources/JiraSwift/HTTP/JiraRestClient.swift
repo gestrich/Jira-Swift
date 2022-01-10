@@ -91,7 +91,6 @@ public class JiraRestClient: RestClient {
             
             do {
                 let issue = try decoder.decode(Issue.self, from: json)
-                print(issue)
                 completionBlock(issue)
             } catch {
                 errorBlock(.deserialization(error))
