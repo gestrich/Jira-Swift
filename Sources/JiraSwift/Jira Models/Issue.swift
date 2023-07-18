@@ -25,9 +25,9 @@ public struct Issue : Codable {
     
     public struct Fields : Codable {
         
-        let epic: String?
+        public let epic: String?
         public var summary: String
-        var fixVersions: [FixVersion]?
+        public var fixVersions: [FixVersion]?
         public let assignee: Assignee?
         public var description : String?
         public let status: IssueStatus
