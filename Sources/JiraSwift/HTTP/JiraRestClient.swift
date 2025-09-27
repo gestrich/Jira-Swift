@@ -14,11 +14,11 @@ import SwiftRestTools
 public class JiraRestClient: RestClient {
     
     
-    public func getBoards(completionBlock:(@escaping ([Board]) -> Void), errorBlock:(@escaping (RestClientError) -> Void)) {
+    public func getBoards(completionBlock:(@escaping ([Board]) -> Void), errorBlock:(@escaping (SwiftRestTools.RestClientError) -> Void)) {
         getBoards(startAt: 0, completionBlock: completionBlock, errorBlock:errorBlock)
     }
     
-    public func getBoards(startAt: Int, completionBlock:(@escaping ([Board]) -> Void), errorBlock:(@escaping (RestClientError) -> Void)) {
+    public func getBoards(startAt: Int, completionBlock:(@escaping ([Board]) -> Void), errorBlock:(@escaping (SwiftRestTools.RestClientError) -> Void)) {
         
         getData(relativeURL: "agile/latest/board?startAt=\(startAt)", completionBlock: { (json) in
             
@@ -42,7 +42,7 @@ public class JiraRestClient: RestClient {
         }, errorBlock:errorBlock)
     }
     
-    public func getCurrentSprint(for board: Board, completionBlock:(@escaping (Sprint?) -> Void), errorBlock:(@escaping (RestClientError) -> Void))  {
+    public func getCurrentSprint(for board: Board, completionBlock:(@escaping (Sprint?) -> Void), errorBlock:(@escaping (SwiftRestTools.RestClientError) -> Void))  {
         getSprints(for:board, completionBlock:{ (sprints) in
             for sprint in sprints {
                 if sprint.state == "active" {
@@ -56,11 +56,11 @@ public class JiraRestClient: RestClient {
         
     }
     
-    public func getSprints(for board:Board, completionBlock:(@escaping ([Sprint]) -> Void), errorBlock:(@escaping (RestClientError) -> Void)) {
+    public func getSprints(for board:Board, completionBlock:(@escaping ([Sprint]) -> Void), errorBlock:(@escaping (SwiftRestTools.RestClientError) -> Void)) {
         getSprints(for: board, startAt: 0, completionBlock: completionBlock, errorBlock:errorBlock)
     }
     
-    public func getSprints(for board:Board, startAt: Int, completionBlock:(@escaping ([Sprint]) -> Void), errorBlock:(@escaping (RestClientError) -> Void))  {
+    public func getSprints(for board:Board, startAt: Int, completionBlock:(@escaping ([Sprint]) -> Void), errorBlock:(@escaping (SwiftRestTools.RestClientError) -> Void))  {
         
         getData(relativeURL: "agile/latest/board/\(board.id)/sprint?startAt=\(startAt)", completionBlock: { (json) in
             
@@ -84,7 +84,7 @@ public class JiraRestClient: RestClient {
         }, errorBlock:errorBlock)
     }
     
-    public func issue(identifier: String, completionBlock:(@escaping (Issue) -> Void), errorBlock:(@escaping (RestClientError) -> Void))  {
+    public func issue(identifier: String, completionBlock:(@escaping (Issue) -> Void), errorBlock:(@escaping (SwiftRestTools.RestClientError) -> Void))  {
         
         getData(relativeURL: "api/2/issue/\(identifier)", completionBlock: { (json) in
             let decoder = self.jsonDecoder()
@@ -98,13 +98,13 @@ public class JiraRestClient: RestClient {
         }, errorBlock:errorBlock)
     }
     
-    public func issues(for board: Board, sprint: Sprint, completionBlock:(@escaping ([Issue]) -> Void), errorBlock:(@escaping (RestClientError) -> Void)) {
+    public func issues(for board: Board, sprint: Sprint, completionBlock:(@escaping ([Issue]) -> Void), errorBlock:(@escaping (SwiftRestTools.RestClientError) -> Void)) {
         //FIXME - The start thing should work properly with bleow method
         let relativeURL = "agile/latest/board/\(board.id)/sprint/\(sprint.id)/issue?startAt="
         issues(for: relativeURL, startAt: 0, completionBlock: completionBlock, errorBlock:errorBlock)
     }
     
-    func issues(for relativeURL: String, startAt: Int, completionBlock:(@escaping ([Issue]) -> Void), errorBlock:(@escaping (RestClientError) -> Void)){
+    func issues(for relativeURL: String, startAt: Int, completionBlock:(@escaping ([Issue]) -> Void), errorBlock:(@escaping (SwiftRestTools.RestClientError) -> Void)){
         getData(relativeURL: relativeURL + "&startAt=\(startAt)", completionBlock: { (json) in
             
             let decoder = self.jsonDecoder()
@@ -131,19 +131,66 @@ public class JiraRestClient: RestClient {
     }
     
     
-    public func issues(for filter: JQLFilter, completionBlock:(@escaping ([Issue]) -> Void), errorBlock:(@escaping (RestClientError) -> Void)) {
+    public func issues(for filter: JQLFilter, completionBlock:(@escaping ([Issue]) -> Void), errorBlock:(@escaping (SwiftRestTools.RestClientError) -> Void)) {
         let relativeUrl = "api/2/search?" + filter.getString()
         
         issues(for: relativeUrl, startAt: 0, completionBlock:completionBlock, errorBlock:errorBlock)
     }
     
-    public func uploadFile(filePath: String, issueIdentifier: String, completionBlock:(@escaping () -> Void), errorBlock:(@escaping (RestClientError) -> Void))  {
+    public func uploadFile(filePath: String, issueIdentifier: String, completionBlock:(@escaping () -> Void), errorBlock:(@escaping (SwiftRestTools.RestClientError) -> Void))  {
         
         uploadFile(filePath: filePath, relativeDestinationPath: "api/2/issue/\(issueIdentifier)/attachments", completionBlock: { (data) in
             //TODO: Validate the JSON data here.
             completionBlock()
         }, errorBlock:errorBlock)
         
+    }
+    
+    // MARK: - Create Issue
+    
+    public func createIssue(request: CreateIssueRequest,
+                           completionBlock: @escaping (CreateIssueResponse) -> Void,
+                           errorBlock: @escaping (SwiftRestTools.RestClientError) -> Void) {
+        
+        // Use peformJSONPost from the parent RestClient class
+        peformJSONPost(relativeURL: "api/2/issue", payload: request, completionBlock: { (data) in
+            let decoder = self.jsonDecoder()
+            
+            do {
+                let response = try decoder.decode(CreateIssueResponse.self, from: data)
+                completionBlock(response)
+            } catch {
+                errorBlock(.deserialization(error))
+            }
+        }, errorBlock: errorBlock)
+    }
+    
+    // Convenience method for simple issue creation
+    public func createIssue(projectKey: String,
+                           issueType: String,
+                           summary: String,
+                           description: String? = nil,
+                           priority: String? = nil,
+                           labels: [String]? = nil,
+                           completionBlock: @escaping (CreateIssueResponse) -> Void,
+                           errorBlock: @escaping (SwiftRestTools.RestClientError) -> Void) {
+        
+        let project = ProjectRef(key: projectKey)
+        let issueTypeRef = IssueTypeRef(name: issueType)
+        let priorityRef = priority.map { PriorityRef(name: $0) }
+        
+        let fields = CreateIssueFields(
+            project: project,
+            summary: summary,
+            description: description,
+            issuetype: issueTypeRef,
+            priority: priorityRef,
+            labels: labels
+        )
+        
+        let request = CreateIssueRequest(fields: fields)
+        
+        createIssue(request: request, completionBlock: completionBlock, errorBlock: errorBlock)
     }
     
     public func jsonDecoder() -> JSONDecoder {
