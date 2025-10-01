@@ -132,8 +132,8 @@ public class JiraRestClient: RestClient {
     
     
     public func issues(for filter: JQLFilter, completionBlock:(@escaping ([Issue]) -> Void), errorBlock:(@escaping (SwiftRestTools.RestClientError) -> Void)) {
-        let relativeUrl = "api/2/search?" + filter.getString()
-        
+        let relativeUrl = "api/3/search/jql?" + filter.getString()
+
         issues(for: relativeUrl, startAt: 0, completionBlock:completionBlock, errorBlock:errorBlock)
     }
     
