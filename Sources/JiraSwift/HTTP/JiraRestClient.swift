@@ -11,174 +11,111 @@
 import Foundation
 import SwiftRestTools
 
-public class JiraRestClient: RestClient {
+public class JiraRestClient: RestClient, @unchecked Sendable {
     
     
-    public func getBoards(completionBlock:(@escaping ([Board]) -> Void), errorBlock:(@escaping (SwiftRestTools.RestClientError) -> Void)) {
-        getBoards(startAt: 0, completionBlock: completionBlock, errorBlock:errorBlock)
+    public func getBoards() async throws -> [Board] {
+        try await getBoards(startAt: 0)
     }
-    
-    public func getBoards(startAt: Int, completionBlock:(@escaping ([Board]) -> Void), errorBlock:(@escaping (SwiftRestTools.RestClientError) -> Void)) {
-        
-        getData(relativeURL: "agile/latest/board?startAt=\(startAt)", completionBlock: { (json) in
-            
-            let decoder = self.jsonDecoder()
-            
-            do {
-                let boardResponse = try decoder.decode(BoardResponse.self, from: json)
-                let boards = boardResponse.boards
-                
-                if boardResponse.isLast == false {
-                    self.getBoards(startAt: startAt + boardResponse.maxResults, completionBlock: { (blockBoards)  in
-                        completionBlock(boards + blockBoards)
-                    }, errorBlock:errorBlock)
-                } else {
-                    completionBlock(boards)                    
-                }
-            } catch {
-                errorBlock(.deserialization(error))
-            }
-            
-        }, errorBlock:errorBlock)
-    }
-    
-    public func getCurrentSprint(for board: Board, completionBlock:(@escaping (Sprint?) -> Void), errorBlock:(@escaping (SwiftRestTools.RestClientError) -> Void))  {
-        getSprints(for:board, completionBlock:{ (sprints) in
-            for sprint in sprints {
-                if sprint.state == "active" {
-                    completionBlock(sprint)
-                }
-            }            
-            
-            completionBlock(nil)
-            
-        }, errorBlock:errorBlock)
-        
-    }
-    
-    public func getSprints(for board:Board, completionBlock:(@escaping ([Sprint]) -> Void), errorBlock:(@escaping (SwiftRestTools.RestClientError) -> Void)) {
-        getSprints(for: board, startAt: 0, completionBlock: completionBlock, errorBlock:errorBlock)
-    }
-    
-    public func getSprints(for board:Board, startAt: Int, completionBlock:(@escaping ([Sprint]) -> Void), errorBlock:(@escaping (SwiftRestTools.RestClientError) -> Void))  {
-        
-        getData(relativeURL: "agile/latest/board/\(board.id)/sprint?startAt=\(startAt)", completionBlock: { (json) in
-            
-            let decoder = self.jsonDecoder()
-            
-            do {
-                let sprintResponse = try decoder.decode(SprintResponse.self, from: json)
-                let sprints = sprintResponse.sprints
-                
-                if sprintResponse.isLast == false {
-                    self.getSprints(for: board, startAt: startAt + sprintResponse.maxResults, completionBlock: { (blockSprints)  in
-                        completionBlock(sprints + blockSprints)
-                    }, errorBlock:errorBlock)
-                } else {
-                    completionBlock(sprints)                    
-                }
-            } catch {
-                errorBlock(.deserialization(error))
-            }
-            
-        }, errorBlock:errorBlock)
-    }
-    
-    public func issue(identifier: String, completionBlock:(@escaping (Issue) -> Void), errorBlock:(@escaping (SwiftRestTools.RestClientError) -> Void))  {
-        
-        getData(relativeURL: "api/2/issue/\(identifier)", completionBlock: { (json) in
-            let decoder = self.jsonDecoder()
-            
-            do {
-                let issue = try decoder.decode(Issue.self, from: json)
-                completionBlock(issue)
-            } catch {
-                errorBlock(.deserialization(error))
-            }
-        }, errorBlock:errorBlock)
-    }
-    
-    public func issues(for board: Board, sprint: Sprint, completionBlock:(@escaping ([Issue]) -> Void), errorBlock:(@escaping (SwiftRestTools.RestClientError) -> Void)) {
-        //FIXME - The start thing should work properly with bleow method
-        let relativeURL = "agile/latest/board/\(board.id)/sprint/\(sprint.id)/issue?startAt="
-        issues(for: relativeURL, startAt: 0, completionBlock: completionBlock, errorBlock:errorBlock)
-    }
-    
-    func issues(for relativeURL: String, startAt: Int, completionBlock:(@escaping ([Issue]) -> Void), errorBlock:(@escaping (SwiftRestTools.RestClientError) -> Void)){
-        getData(relativeURL: relativeURL + "&startAt=\(startAt)", completionBlock: { (json) in
-            
-            let decoder = self.jsonDecoder()
-            
-            do {
-                let issueResponse = try decoder.decode(IssueResponse.self, from: json)
-                let issues = issueResponse.issues
-                let nextIndexToFetch = issueResponse.nextIndex()
-                if nextIndexToFetch >= 0 {
-                    //Recursive call to fetch next and add these results
-                    self.issues(for: relativeURL, startAt: nextIndexToFetch, completionBlock: { (nextIssues) in
-                        completionBlock(issues + nextIssues)
-                    }, errorBlock:errorBlock)
-                } else {
-                    //Done, no more to fetch
-                    completionBlock(issues)
-                }
-                
-            } catch {
-                errorBlock(.deserialization(error))
-            }
-            
-        }, errorBlock:errorBlock)
-    }
-    
-    
-    public func issues(for filter: JQLFilter, completionBlock:(@escaping ([Issue]) -> Void), errorBlock:(@escaping (SwiftRestTools.RestClientError) -> Void)) {
-        let relativeUrl = "api/3/search/jql?" + filter.getString()
 
-        issues(for: relativeUrl, startAt: 0, completionBlock:completionBlock, errorBlock:errorBlock)
+    public func getBoards(startAt: Int) async throws -> [Board] {
+        let json = try await getData(relativeURL: "agile/latest/board?startAt=\(startAt)")
+        let decoder = self.jsonDecoder()
+        let boardResponse = try decoder.decode(BoardResponse.self, from: json)
+        let boards = boardResponse.boards
+
+        if boardResponse.isLast == false {
+            let blockBoards = try await self.getBoards(startAt: startAt + boardResponse.maxResults)
+            return boards + blockBoards
+        } else {
+            return boards
+        }
     }
     
-    public func uploadFile(filePath: String, issueIdentifier: String, completionBlock:(@escaping () -> Void), errorBlock:(@escaping (SwiftRestTools.RestClientError) -> Void))  {
-        
-        uploadFile(filePath: filePath, relativeDestinationPath: "api/2/issue/\(issueIdentifier)/attachments", completionBlock: { (data) in
-            //TODO: Validate the JSON data here.
-            completionBlock()
-        }, errorBlock:errorBlock)
-        
+    public func getCurrentSprint(for board: Board) async throws -> Sprint? {
+        let sprints = try await getSprints(for: board)
+        for sprint in sprints {
+            if sprint.state == "active" {
+                return sprint
+            }
+        }
+        return nil
+    }
+
+    public func getSprints(for board: Board) async throws -> [Sprint] {
+        try await getSprints(for: board, startAt: 0)
+    }
+
+    public func getSprints(for board: Board, startAt: Int) async throws -> [Sprint] {
+        let json = try await getData(relativeURL: "agile/latest/board/\(board.id)/sprint?startAt=\(startAt)")
+        let decoder = self.jsonDecoder()
+        let sprintResponse = try decoder.decode(SprintResponse.self, from: json)
+        let sprints = sprintResponse.sprints
+
+        if sprintResponse.isLast == false {
+            let blockSprints = try await self.getSprints(for: board, startAt: startAt + sprintResponse.maxResults)
+            return sprints + blockSprints
+        } else {
+            return sprints
+        }
+    }
+    
+    public func issue(identifier: String) async throws -> Issue {
+        let json = try await getData(relativeURL: "api/2/issue/\(identifier)")
+        let decoder = self.jsonDecoder()
+        let issue = try decoder.decode(Issue.self, from: json)
+        return issue
+    }
+    
+    public func issues(for board: Board, sprint: Sprint) async throws -> [Issue] {
+        let relativeURL = "agile/latest/board/\(board.id)/sprint/\(sprint.id)/issue?startAt="
+        return try await issues(for: relativeURL, startAt: 0)
+    }
+
+    func issues(for relativeURL: String, startAt: Int) async throws -> [Issue] {
+        let json = try await getData(relativeURL: relativeURL + "&startAt=\(startAt)")
+        let decoder = self.jsonDecoder()
+        let issueResponse = try decoder.decode(IssueResponse.self, from: json)
+        let issues = issueResponse.issues
+        let nextIndexToFetch = issueResponse.nextIndex()
+
+        if nextIndexToFetch >= 0 {
+            let nextIssues = try await self.issues(for: relativeURL, startAt: nextIndexToFetch)
+            return issues + nextIssues
+        } else {
+            return issues
+        }
+    }
+
+    public func issues(for filter: JQLFilter) async throws -> [Issue] {
+        let relativeUrl = "api/3/search/jql?" + filter.getString()
+        return try await issues(for: relativeUrl, startAt: 0)
+    }
+    
+    public func uploadFile(filePath: String, issueIdentifier: String) async throws {
+        _ = try await uploadFile(filePath: filePath, relativeDestinationPath: "api/2/issue/\(issueIdentifier)/attachments")
     }
     
     // MARK: - Create Issue
     
-    public func createIssue(request: CreateIssueRequest,
-                           completionBlock: @escaping (CreateIssueResponse) -> Void,
-                           errorBlock: @escaping (SwiftRestTools.RestClientError) -> Void) {
-        
-        // Use peformJSONPost from the parent RestClient class
-        peformJSONPost(relativeURL: "api/2/issue", payload: request, completionBlock: { (data) in
-            let decoder = self.jsonDecoder()
-            
-            do {
-                let response = try decoder.decode(CreateIssueResponse.self, from: data)
-                completionBlock(response)
-            } catch {
-                errorBlock(.deserialization(error))
-            }
-        }, errorBlock: errorBlock)
+    public func createIssue(request: CreateIssueRequest) async throws -> CreateIssueResponse {
+        let data = try await peformJSONPost(relativeURL: "api/2/issue", payload: request)
+        let decoder = self.jsonDecoder()
+        let response = try decoder.decode(CreateIssueResponse.self, from: data)
+        return response
     }
-    
-    // Convenience method for simple issue creation
+
     public func createIssue(projectKey: String,
                            issueType: String,
                            summary: String,
                            description: String? = nil,
                            priority: String? = nil,
-                           labels: [String]? = nil,
-                           completionBlock: @escaping (CreateIssueResponse) -> Void,
-                           errorBlock: @escaping (SwiftRestTools.RestClientError) -> Void) {
-        
+                           labels: [String]? = nil) async throws -> CreateIssueResponse {
+
         let project = ProjectRef(key: projectKey)
         let issueTypeRef = IssueTypeRef(name: issueType)
         let priorityRef = priority.map { PriorityRef(name: $0) }
-        
+
         let fields = CreateIssueFields(
             project: project,
             summary: summary,
@@ -187,10 +124,10 @@ public class JiraRestClient: RestClient {
             priority: priorityRef,
             labels: labels
         )
-        
+
         let request = CreateIssueRequest(fields: fields)
-        
-        createIssue(request: request, completionBlock: completionBlock, errorBlock: errorBlock)
+
+        return try await createIssue(request: request)
     }
     
     public func jsonDecoder() -> JSONDecoder {

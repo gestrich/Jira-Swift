@@ -10,66 +10,29 @@ import SwiftRestTools
 //local file system.
 
 class JiraSwiftTests: XCTestCase {
-    func testImageUpload() {
-    
+    func testImageUpload() async throws {
         let jiraClient = getJiraClient()!
-        
-        let expectation = XCTestExpectation(description: "issuesForAsnc test")
-        
         let filePath = "/Users/bill/Dropbox/screenshots/testImage.jpg"
-        jiraClient.uploadFile(filePath: filePath, issueIdentifier: "CA-1", completionBlock: { () in
-            print("done")
-            expectation.fulfill()
-        }) { (error) in
-            print("Error")
-            expectation.fulfill()
-        }
-        
-        wait(for: [expectation], timeout: 100.0)
-
+        try await jiraClient.uploadFile(filePath: filePath, issueIdentifier: "CA-1")
+        print("done")
     }
     
-    func testGetIssue() {
-        //issue
-        
-        let expectation = XCTestExpectation(description: "testGetIssue test")
-        let jiraClient = getJiraClient()
-        jiraClient?.issue(identifier: "FFM-12345", completionBlock: { (issue) in
-            print(issue)
-            expectation.fulfill()
-        }, errorBlock: { (error) in
-            print(error)
-            expectation.fulfill()
-        })
-
-        
-        wait(for: [expectation], timeout: 100.0)
-        
-    }
-    
-    func testIssueQuery() {
-        
+    func testGetIssue() async throws {
         let jiraClient = getJiraClient()!
-        
+        let issue = try await jiraClient.issue(identifier: "FFM-12345")
+        print(issue)
+    }
+    
+    func testIssueQuery() async throws {
+        let jiraClient = getJiraClient()!
         let jqlFilter = JQLFilter(jql: "status=Backlog")
-        let expectation = XCTestExpectation(description: "issuesForAsnc test")
-        
-        jiraClient.issues(for: jqlFilter, completionBlock: { (issues) in
-            for issue : Issue in issues {
-                print(issue.key)
-                print(issue.urlString)
-                print(issue.fields)
-            }
-            print(issues)
-            expectation.fulfill()
-            
-        }, errorBlock: { (error) in
-            print(error)
-            expectation.fulfill()
-        })
-        
-        wait(for: [expectation], timeout: 100.0)
-        
+        let issues = try await jiraClient.issues(for: jqlFilter)
+        for issue : Issue in issues {
+            print(issue.key)
+            print(issue.urlString)
+            print(issue.fields)
+        }
+        print(issues)
     }
     
     func getJiraClient() -> JiraRestClient? {
