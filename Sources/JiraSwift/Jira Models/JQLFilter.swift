@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct JQLFilter {
+public struct JQLFilter: Sendable {
     let jql: String
     
     public init(jql: String){

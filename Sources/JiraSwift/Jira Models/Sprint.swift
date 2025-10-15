@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct Sprint : Codable {
+public struct Sprint: Codable, Sendable {
     public var completeDate: String?
     public var endDate: String?
     public var goal: String?

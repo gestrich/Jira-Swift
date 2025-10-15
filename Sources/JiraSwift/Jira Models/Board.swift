@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct Board : Codable {
+public struct Board: Codable, Sendable {
     public var id: Int = 0
     public var name: String = ""
     public var url: String = ""

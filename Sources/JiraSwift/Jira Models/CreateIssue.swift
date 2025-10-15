@@ -9,7 +9,7 @@ import Foundation
 
 // MARK: - Request Models
 
-public struct CreateIssueRequest: Codable {
+public struct CreateIssueRequest: Codable, Sendable {
     public let fields: CreateIssueFields
     
     public init(fields: CreateIssueFields) {
@@ -17,7 +17,7 @@ public struct CreateIssueRequest: Codable {
     }
 }
 
-public struct CreateIssueFields: Codable {
+public struct CreateIssueFields: Codable, Sendable {
     public let project: ProjectRef
     public let summary: String
     public let description: String?
@@ -79,7 +79,7 @@ public struct CreateIssueFields: Codable {
 
 // MARK: - Reference Types
 
-public struct ProjectRef: Codable {
+public struct ProjectRef: Codable, Sendable {
     public let key: String?
     public let id: String?
     
@@ -94,7 +94,7 @@ public struct ProjectRef: Codable {
     }
 }
 
-public struct IssueTypeRef: Codable {
+public struct IssueTypeRef: Codable, Sendable {
     public let name: String?
     public let id: String?
     
@@ -109,7 +109,7 @@ public struct IssueTypeRef: Codable {
     }
 }
 
-public struct PriorityRef: Codable {
+public struct PriorityRef: Codable, Sendable {
     public let name: String?
     public let id: String?
     
@@ -124,7 +124,7 @@ public struct PriorityRef: Codable {
     }
 }
 
-public struct ComponentRef: Codable {
+public struct ComponentRef: Codable, Sendable {
     public let name: String?
     public let id: String?
     
@@ -139,7 +139,7 @@ public struct ComponentRef: Codable {
     }
 }
 
-public struct AssigneeRef: Codable {
+public struct AssigneeRef: Codable, Sendable {
     public let accountId: String?
     public let name: String?
     
@@ -156,7 +156,7 @@ public struct AssigneeRef: Codable {
 
 // MARK: - Response Models
 
-public struct CreateIssueResponse: Codable {
+public struct CreateIssueResponse: Codable, Sendable {
     public let id: String
     public let key: String
     public let `self`: String
@@ -189,7 +189,7 @@ struct DynamicCodingKeys: CodingKey {
 }
 
 // Type-erased wrapper for encoding any Codable value
-public struct AnyCodable: Codable {
+public struct AnyCodable: Codable, @unchecked Sendable {
     private let value: Any
     
     public init(_ value: Any) {

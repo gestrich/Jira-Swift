@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct Issue : Codable {
+public struct Issue: Codable, Sendable {
     public var id: String = ""
     public var key: String = ""
     public var urlString: String = ""
@@ -23,7 +23,7 @@ public struct Issue : Codable {
     
     
     
-    public struct Fields : Codable {
+    public struct Fields: Codable, Sendable {
         
         public let epic: String?
         public var summary: String
@@ -44,7 +44,7 @@ public struct Issue : Codable {
         }
     }
     
-    public struct FixVersion : Codable {
+    public struct FixVersion: Codable, Sendable {
         public let description : String?
         public let name : String
         enum CodingKeys : String, CodingKey {
@@ -53,7 +53,7 @@ public struct Issue : Codable {
         }
     }
     
-    public struct IssueStatus : Codable {
+    public struct IssueStatus: Codable, Sendable {
         public let description : String?
         public let name : String
     }

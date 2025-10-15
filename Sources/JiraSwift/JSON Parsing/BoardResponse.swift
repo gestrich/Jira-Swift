@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct BoardResponse : Codable {
+struct BoardResponse: Codable, Sendable {
     var isLast: Bool = false
     var maxResults: Int = 0
     var startAt: Int = 0

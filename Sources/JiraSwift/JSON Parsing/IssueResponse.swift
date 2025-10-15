@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct IssueResponse : Codable {
+public struct IssueResponse: Codable, Sendable {
     var maxResults: Int = 0
     var startAt: Int = 0
     var total: Int = 0

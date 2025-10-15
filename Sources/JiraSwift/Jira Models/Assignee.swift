@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct Assignee : Codable {
+public struct Assignee: Codable, Sendable {
     public let key : Int?
     public let name : String?
     public let displayName : String
@@ -22,7 +22,7 @@ public struct Assignee : Codable {
         case avatarUrls
     }
     
-    public struct AvatarURLs : Codable {
+    public struct AvatarURLs: Codable, Sendable {
 
         public let size16SquareURL : String
         public let size24SquareURL : String
