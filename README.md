@@ -14,17 +14,17 @@ This is still under construction but feedback is welcome
 
 ```swift
 let jiraClient = JiraRestClient(baseURL:"https://<Your Jira URL>.atlassian.net/rest/", auth:BasicAuth(username: "SomeUsername", password: "SomePa$$word))
-        
+
 let jqlFilter = JQLFilter(jql: "assignee=george AND status=Open")
-        
-jiraClient.issues(for: jqlFilter, completionBlock: { (issues) in
-  for issue : Issue in issues {
-    print(issue.key)
-    print(issue.urlString)
-    print(issue.fields)
-  }
-            
-}, errorBlock: { (error) in
-  print(error)            
-})
+
+do {
+    let issues = try await jiraClient.issues(for: jqlFilter)
+    for issue in issues {
+        print(issue.key)
+        print(issue.urlString)
+        print(issue.fields)
+    }
+} catch {
+    print(error)
+}
 ```

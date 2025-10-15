@@ -87,7 +87,13 @@ public class JiraRestClient: RestClient, @unchecked Sendable {
         }
     }
 
+    // Note: V2 search API has been deprecated by Jira for JQL searches
     public func issues(for filter: JQLFilter) async throws -> [Issue] {
+        let relativeUrl = "api/2/search?" + filter.getString()
+        return try await issues(for: relativeUrl, startAt: 0)
+    }
+
+    public func issuesV3(for filter: JQLFilter) async throws -> [Issue] {
         let relativeUrl = "api/3/search/jql?" + filter.getString()
         return try await issues(for: relativeUrl, startAt: 0)
     }
